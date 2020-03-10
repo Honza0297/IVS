@@ -1,0 +1,56 @@
+# Stanovené termíny:
+
+	- 10.3.2020 
+		- návrh aplikace a GUI
+		- vytvoření a inicializace git repozitáře
+	- 25.3.2020
+		- testy
+	- 30.3.2020
+		- matematická knihovna
+		- implementace GUI
+	- 5.4.2020
+		- implementace backendu aplikace
+	- 10.4.2020
+		- binding GUI na backend
+		- mockup nové verze GUI
+		- makefile
+	- 17.4.2020
+		- dokončení dokumentace
+		- testování aplikace
+		- profiling
+	- 20.4.2020
+		- dokončení projektu
+	- 23.4.2020
+		- deadline projektu
+
+# Přiřazení úkolů
+
+	- xbuben05
+		- testy
+		- matematická knihovna
+		- makefile
+	- xberan43
+		- backend
+		- dokumentace
+		- správa repozitáře
+	- xdragu01
+		- implementace GUI
+		- binding GUI na backend
+		- návrh mockupu
+	- společně
+		- návrh GUI a architektury
+		- testování aplikace
+		- prezentace projektu
+		- profiling
+
+# Komunikační kanály
+
+	- skupinová konverzace na Facebook Messenger
+	- projekty, issues a další na githubu
+	- osobní schůzky
+
+# Správa verzí
+
+	- gitový repozitář na [https://github.com/Honza0297/IVS](Githubu)
+	- odeslán invite link uživateli ivskontrola
+
