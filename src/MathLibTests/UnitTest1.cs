@@ -90,11 +90,8 @@ namespace MathLibTests
             Assert.Equal(-1, MathLib.Power(-1, 3));
             Assert.Equal(16, MathLib.Power(2, 4));
             Assert.Equal(16, MathLib.Power(-2, 4));
-            Assert.Equal(1, MathLib.Power(-42, 0));
-            Assert.Equal(1, MathLib.Power(0, 0));
             Assert.Equal(Math.Pow(2.3, 3), MathLib.Power(2.3, 3));
             Assert.Equal(Math.Pow(-5.9, 7), MathLib.Power(-5.9, 7));
-            Assert.Equal(1, MathLib.Power(23, 0));
             Assert.Throws<MathLibException>(() => MathLib.Power(1, 0));
             Assert.Throws<MathLibException>(() => MathLib.Power(-5, -1));
             Assert.Throws<MathLibException>(() => MathLib.Power(10, -42));
@@ -106,11 +103,11 @@ namespace MathLibTests
             Assert.Equal(0,  MathLib.Root(0, 4));
             Assert.Equal(0,  MathLib.Root(0, 19));
             Assert.Equal(2,  MathLib.Root(4, 2));
-            Assert.Equal(-3,  MathLib.Root(-9, 3));
+            Assert.Equal(-3,  MathLib.Root(-27, 3));
             Assert.Equal(Math.Pow(3.46, 1 / (double) 4),  MathLib.Root(3.46, 4));
-            Assert.Equal(Math.Pow(-83.2, 1 / (double) 5),  MathLib.Root(83.2, 5));
+            Assert.Equal(-Math.Pow(83.2, 1 / (double) 5),  MathLib.Root(-83.2, 5));
+            Assert.Equal(0.2,  MathLib.Root(5, -1));
             Assert.Throws<MathLibException>(() => MathLib.Root(5, 0));
-            Assert.Throws<MathLibException>(() => MathLib.Root(5, -1));
             Assert.Throws<MathLibException>(() => MathLib.Root(-1, 2));
             Assert.Throws<MathLibException>(() => MathLib.Root(-52.36, 4));
         }
@@ -131,7 +128,7 @@ namespace MathLibTests
                 if (randomNumber != randoms[0])
                     difference = true;
 
-                Assert.True(randomNumber > 0 && randomNumber < 1);
+                Assert.True(randomNumber >= 0 && randomNumber < 1);
             }
 
             Assert.True(difference); //theoretically could fail, but it just won't
