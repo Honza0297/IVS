@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Reflection.Metadata.Ecma335;
 using IVSCalc.MathLib;
 using Xunit;
 
@@ -30,44 +32,109 @@ namespace MathLibTests
         public void SubtractionTest()
         {
             Assert.Equal(MathLib.Subtract(a, b), a - b);
-            //TODO Denny
+            Assert.Equal(MathLib.Subtract(a, c), a - c);
+            Assert.Equal(MathLib.Subtract(a, d), a - d);
+            Assert.Equal(MathLib.Subtract(d,e), d- e);
+            Assert.Equal(MathLib.Subtract(d, f), d - f);
+            Assert.Equal(MathLib.Subtract(zero, f), zero - f);
+            Assert.Equal(MathLib.Subtract(e, zero), e - zero);
         }
 
         [Fact]
         public void MultiplicationTest()
         {
             Assert.Equal(MathLib.Multiply(a, b), a * b);
-            //TODO Denny
+            Assert.Equal(MathLib.Multiply(b, a), a * b);
+            Assert.Equal(MathLib.Multiply(a, c), a * c);
+            Assert.Equal(MathLib.Multiply(a, d), a * d);
+            Assert.Equal(MathLib.Multiply(c, e), c * e);
+            Assert.Equal(MathLib.Multiply(d, e), d * e);
+            Assert.Equal(MathLib.Multiply(e, f), f * e);
+            Assert.Equal(MathLib.Multiply(f, zero), f * zero);
+            Assert.Equal(MathLib.Multiply(b, zero), b * zero);
+            Assert.Equal(MathLib.Multiply(f, f), f * f);
         }
 
         [Fact]
         public void DivisionTest()
         {
-            Assert.Equal(MathLib.Divide(a, b), a / (double) b);
-            //TODO Denny
+            Assert.Equal(MathLib.Divide(a, b), a / (double)b);
+            Assert.Equal(MathLib.Divide(a, c), a / (double)c);
+            Assert.Equal(MathLib.Divide(b, a), b / (double)a);
+            Assert.Equal(MathLib.Divide(d, e), d / e);
+            Assert.Equal(MathLib.Divide(e, f), e / f);
+            Assert.Equal(MathLib.Divide(f, d), f / d);
+            Assert.Throws<MathLibException>(() => MathLib.Divide(a, zero));
+            Assert.Throws<MathLibException>(() => MathLib.Divide(f, zero));
+            Assert.Throws<MathLibException>(() => MathLib.Divide(zero, zero));
         }
 
         [Fact]
         public void FactorialTest()
         {
-            //Assert.Equal(MathLib.Factorial(a));
-            //TODO Denny
+            Assert.Equal(1, MathLib.Factorial(0));
+            Assert.Equal(1, MathLib.Factorial(1));
+            Assert.Equal(2, MathLib.Factorial(2));
+            Assert.Equal(6, MathLib.Factorial(3));
+            Assert.Equal(120, MathLib.Factorial(5));
+            Assert.Throws<MathLibException>(() => MathLib.Factorial(-1));
+            Assert.Throws<MathLibException>(() => MathLib.Factorial(-42));
         }
 
         [Fact]
         public void PowerTest()
         {
-            //TODO Denny
-            //Assert.Equal(MathLib.Power(a, b), );
+            Assert.Equal(4, MathLib.Power(2, 2));
+            Assert.Equal(0, MathLib.Power(0, 2));
+            Assert.Equal(1, MathLib.Power(-1, 2));
+            Assert.Equal(-1, MathLib.Power(-1, 3));
+            Assert.Equal(16, MathLib.Power(2, 4));
+            Assert.Equal(16, MathLib.Power(-2, 4));
+            Assert.Equal(1, MathLib.Power(-42, 0));
+            Assert.Equal(1, MathLib.Power(0, 0));
+            Assert.Equal(Math.Pow(2.3, 3), MathLib.Power(2.3, 3));
+            Assert.Equal(Math.Pow(-5.9, 7), MathLib.Power(-5.9, 7));
+            Assert.Equal(1, MathLib.Power(23, 0));
+            Assert.Throws<MathLibException>(() => MathLib.Power(1, 0));
+            Assert.Throws<MathLibException>(() => MathLib.Power(-5, -1));
+            Assert.Throws<MathLibException>(() => MathLib.Power(10, -42));
         }
 
         [Fact]
         public void RootTest()
         {
-            //Assert.Equal(MathLib.Root(a, b),);
-            //TODO Denny
+            Assert.Equal(0,  MathLib.Root(0, 4));
+            Assert.Equal(0,  MathLib.Root(0, 19));
+            Assert.Equal(2,  MathLib.Root(4, 2));
+            Assert.Equal(-3,  MathLib.Root(-9, 3));
+            Assert.Equal(Math.Pow(3.46, 1 / (double) 4),  MathLib.Root(3.46, 4));
+            Assert.Equal(Math.Pow(-83.2, 1 / (double) 5),  MathLib.Root(83.2, 5));
+            Assert.Throws<MathLibException>(() => MathLib.Root(5, 0));
+            Assert.Throws<MathLibException>(() => MathLib.Root(5, -1));
+            Assert.Throws<MathLibException>(() => MathLib.Root(-1, 2));
+            Assert.Throws<MathLibException>(() => MathLib.Root(-52.36, 4));
         }
 
-        //TODO Denny 1 more math function test
+        [Fact]
+        public void RandomTest()
+        {
+            double[] randoms = new double[100];
+            bool difference = false; //flag for check if at least 1 generated random number is different than the rest of the batch
+
+            for (var i = 0; i < randoms.Length; i++)
+            {
+                randoms[i] = MathLib.Random();
+            }
+
+            foreach (var randomNumber in randoms)
+            {
+                if (randomNumber != randoms[0])
+                    difference = true;
+
+                Assert.True(randomNumber > 0 && randomNumber < 1);
+            }
+
+            Assert.True(difference); //theoretically could fail, but it just won't
+        }
     }
 }

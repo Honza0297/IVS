@@ -42,5 +42,10 @@ namespace IVSCalc.MathLib
         {
             throw new NotImplementedException();
         }
+
+        public static double Random()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
