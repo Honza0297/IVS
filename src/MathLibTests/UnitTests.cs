@@ -1,3 +1,20 @@
+/*******************************************************************
+ * Project: IVSCalc DreamTeamIVS
+ * File: UnitTests.cs
+ * Date: 11.3.2020
+ * Author: Daniel Bubeníèek (xbuben05@stud.fit.vutbr.cz)
+ *
+ * Description: Unit tests for MathLib
+ *
+ *******************************************************************/
+/**
+ * @file UnitTests.cs
+ *
+ * @brief Unit tests for MathLib
+ * @author Daniel Bubeníèek (xbuben05)
+ */
+
+
 using System;
 using System.IO;
 using System.Reflection.Metadata.Ecma335;
@@ -6,6 +23,11 @@ using Xunit;
 
 namespace MathLibTests
 {
+    /**
+     * @class MathLibTests
+     *
+     * @brief Tests for MathLib
+     */
     public class MathLibTests
     {
         private int a = 5;
@@ -15,7 +37,10 @@ namespace MathLibTests
         private double e = 2.1;
         private double f = -4.1;
         private int zero = 0;
-        
+
+        /**
+         * @brief Tests the Add() method of MathLib
+         */
         [Fact]
         public void AdditionTest()
         {
@@ -28,6 +53,9 @@ namespace MathLibTests
             Assert.Equal(MathLib.Add(d, zero), d + zero);
         }
 
+        /**
+         * @brief Tests the Subtract() method of MathLib
+         */
         [Fact]
         public void SubtractionTest()
         {
@@ -40,6 +68,9 @@ namespace MathLibTests
             Assert.Equal(MathLib.Subtract(e, zero), e - zero);
         }
 
+        /**
+         * @brief Tests the Multiply() method of MathLib
+         */
         [Fact]
         public void MultiplicationTest()
         {
@@ -55,6 +86,9 @@ namespace MathLibTests
             Assert.Equal(MathLib.Multiply(f, f), f * f);
         }
 
+        /**
+         * @brief Tests the Divide() method of MathLib
+         */
         [Fact]
         public void DivisionTest()
         {
@@ -69,6 +103,9 @@ namespace MathLibTests
             Assert.Throws<MathLibException>(() => MathLib.Divide(zero, zero));
         }
 
+        /**
+         * @brief Tests the Factorial() method of MathLib
+         */
         [Fact]
         public void FactorialTest()
         {
@@ -81,6 +118,9 @@ namespace MathLibTests
             Assert.Throws<MathLibException>(() => MathLib.Factorial(-42));
         }
 
+        /**
+         * @brief Tests the Power() method of MathLib
+         */
         [Fact]
         public void PowerTest()
         {
@@ -90,31 +130,34 @@ namespace MathLibTests
             Assert.Equal(-1, MathLib.Power(-1, 3));
             Assert.Equal(16, MathLib.Power(2, 4));
             Assert.Equal(16, MathLib.Power(-2, 4));
-            Assert.Equal(1, MathLib.Power(-42, 0));
-            Assert.Equal(1, MathLib.Power(0, 0));
             Assert.Equal(Math.Pow(2.3, 3), MathLib.Power(2.3, 3));
             Assert.Equal(Math.Pow(-5.9, 7), MathLib.Power(-5.9, 7));
-            Assert.Equal(1, MathLib.Power(23, 0));
             Assert.Throws<MathLibException>(() => MathLib.Power(1, 0));
             Assert.Throws<MathLibException>(() => MathLib.Power(-5, -1));
             Assert.Throws<MathLibException>(() => MathLib.Power(10, -42));
         }
 
+        /**
+         * @brief Tests the Root() method of MathLib
+         */
         [Fact]
         public void RootTest()
         {
             Assert.Equal(0,  MathLib.Root(0, 4));
             Assert.Equal(0,  MathLib.Root(0, 19));
             Assert.Equal(2,  MathLib.Root(4, 2));
-            Assert.Equal(-3,  MathLib.Root(-9, 3));
+            Assert.Equal(-3,  MathLib.Root(-27, 3));
             Assert.Equal(Math.Pow(3.46, 1 / (double) 4),  MathLib.Root(3.46, 4));
-            Assert.Equal(Math.Pow(-83.2, 1 / (double) 5),  MathLib.Root(83.2, 5));
+            Assert.Equal(-Math.Pow(83.2, 1 / (double) 5),  MathLib.Root(-83.2, 5));
+            Assert.Equal(0.2,  MathLib.Root(5, -1));
             Assert.Throws<MathLibException>(() => MathLib.Root(5, 0));
-            Assert.Throws<MathLibException>(() => MathLib.Root(5, -1));
             Assert.Throws<MathLibException>(() => MathLib.Root(-1, 2));
             Assert.Throws<MathLibException>(() => MathLib.Root(-52.36, 4));
         }
 
+        /**
+         * @brief Tests the Random() method of MathLib
+         */
         [Fact]
         public void RandomTest()
         {
@@ -131,7 +174,7 @@ namespace MathLibTests
                 if (randomNumber != randoms[0])
                     difference = true;
 
-                Assert.True(randomNumber > 0 && randomNumber < 1);
+                Assert.True(randomNumber >= 0 && randomNumber < 1);
             }
 
             Assert.True(difference); //theoretically could fail, but it just won't
