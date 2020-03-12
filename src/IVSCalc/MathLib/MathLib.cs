@@ -119,18 +119,18 @@ namespace IVSCalc.MathLib
         /**
          * @brief Calculates factorial of the given number
          *
-         * @param a Number for factorial calculation
-         * @return Returns the factorial a (a!)
+         * @param number Number for factorial calculation
+         * @return Returns the factorial of number (number!)
          */
-        public static long Factorial(long a)
+        public static long Factorial(long number)
         {
-            if(a < 0)
+            if(number < 0)
                 throw new MathLibException("Factorial is defined only for zero and greater!");
 
-            if (a == 0)
+            if (number == 0)
                 return 1;
 
-            return a * Factorial(a - 1);
+            return number * Factorial(number - 1);
         }
 
         /**
