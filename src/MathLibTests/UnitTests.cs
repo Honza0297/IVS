@@ -16,7 +16,6 @@
 
 
 using System;
-using IVSCalc.Entities;
 using IVSCalc.MathLib;
 using Xunit;
 

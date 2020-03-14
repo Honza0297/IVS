@@ -8,8 +8,11 @@
  *
  *******************************************************************/
 
-namespace IVSCalc.Entities
+namespace IVSCalc.MathLib
 {
+    /*
+     * @brief Enumeration type to decide what operation is currently executed
+     */
     public enum Operation
     {
         Add = 0,

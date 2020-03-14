@@ -72,9 +72,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\CalcModel.cs" />
-    <Compile Include="Entities\Operand.cs" />
-    <Compile Include="Entities\Operation.cs" />
-    <Compile Include="Entities\TypeOfOperand.cs" />
+    <Compile Include="MathLib\Operand.cs" />
+    <Compile Include="MathLib\Operation.cs" />
+    <Compile Include="MathLib\TypeOfOperand.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
