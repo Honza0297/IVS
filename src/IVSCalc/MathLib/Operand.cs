@@ -59,7 +59,7 @@ namespace IVSCalc.MathLib
         /*
         * @brief Constructor for Operand class
         *
-        * @param longOperand number to store in Operand class
+        * @param doubleOperand number to store in Operand class
         */
         public Operand(double doubleOperand)
         {
