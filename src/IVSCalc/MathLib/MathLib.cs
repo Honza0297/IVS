@@ -7,6 +7,7 @@
  * Description: Math library
  *
  *******************************************************************/
+
 /**
  * @file MathLib.cs
  *
@@ -15,10 +16,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IVSCalc.MathLib
 {
@@ -36,19 +33,7 @@ namespace IVSCalc.MathLib
          * @param b Second number
          * @return Returns the result of a + b
          */
-        public static long Add(long a, long b)
-        {
-            return a + b;
-        }
-
-        /**
-         * @brief Adds two numbers
-         *
-         * @param a First number
-         * @param b Second number
-         * @return Returns the result of a + b
-         */
-        public static double Add(double a, double b)
+        public static Operand Add(Operand a, Operand b)
         {
             return a + b;
         }
@@ -60,57 +45,19 @@ namespace IVSCalc.MathLib
          * @param subtrahend
          * @return Returns the result of minuend - subtrahend
          */
-        public static double Subtract(double minuend, double subtrahend)
+        public static Operand Subtract(Operand minuend, Operand subtrahend)
         {
             return minuend - subtrahend;
         }
 
-        /**
-         * @brief Subtracts two numbers
-         *
-         * @param minuend 
-         * @param subtrahend
-         * @return Returns the result of minuend - subtrahend
-         */
-        public static long Subtract(long minuend, long subtrahend)
-        {
-            return minuend - subtrahend;
-        }
-
-        /**
-         * @brief Multiplies two numbers
-         *
-         * @param a First number
-         * @param b Second number
-         * @return Returns the result of a * b
-         */
-        public static double Multiply(double a, double b)
+        public static Operand Multiply(Operand a, Operand b)
         {
             return a * b;
         }
 
-        /**
-         * @brief Multiplies two numbers
-         *
-         * @param a First number
-         * @param b Second number
-         * @return Returns the result of a * b
-         */
-        public static long Multiply(long a, long b)
+        public static Operand Divide(Operand dividend, Operand divisor)
         {
-            return a * b;
-        }
-
-        /**
-         * @brief Divides two numbers
-         *
-         * @param dividend
-         * @param divisor
-         * @return Returns the result of a / b
-         */
-        public static double Divide(double dividend, double divisor)
-        {
-            if(divisor == 0)
+            if(divisor.DoubleOperand == 0)
                 throw new MathLibException("Division by zero is not defined!");
 
             return dividend / divisor;
@@ -122,15 +69,16 @@ namespace IVSCalc.MathLib
          * @param number Number for factorial calculation
          * @return Returns the factorial of number (number!)
          */
-        public static long Factorial(long number)
+        public static Operand Factorial(Operand number)
         {
-            if(number < 0)
-                throw new MathLibException("Factorial is defined only for zero and greater!");
 
-            if (number == 0)
-                return 1;
+            if (number.Type == TypeOfOperand.Double || number.LongOperand < 0)
+                throw new MathLibException("Factorial is defined only for non-negative integers!");
 
-            return number * Factorial(number - 1);
+            if (number.LongOperand == 0)
+                return new Operand(1);
+
+            return number * Factorial(number - new Operand(1));
         }
 
         /**
@@ -140,12 +88,12 @@ namespace IVSCalc.MathLib
         * @param power Value of power
         * @return Returns the result of baseNumber^power
         */
-        public static double Power(double baseNumber, int power)
+        public static Operand Power(Operand baseNumber, Operand power)
         {
-            if(power <= 0)
-                throw new MathLibException("The only supported powers are 1, 2, 3, ...");
+            if(power.LongOperand <= 0)
+                throw new MathLibException("The only supported powers are greater than zero integers!");
 
-            return Math.Pow(baseNumber, power);
+            return new Operand(Math.Pow(baseNumber.DoubleOperand, power.LongOperand));
         }
 
         /**
@@ -155,17 +103,17 @@ namespace IVSCalc.MathLib
        * @param degree
        * @return Returns the root of radicand with the degree
        */
-        public static double Root(double radicand, int degree)
+        public static Operand Root(Operand radicand, Operand degree)
         {   
-            if(degree == 0)
+            if(degree.LongOperand == 0)
                 throw new MathLibException("Degree cannot be 0!");
 
-            if(radicand < 0 && (degree % 2 == 0)) //radicant is negative and degree is even
+            if(radicand.DoubleOperand < 0 && (degree.LongOperand % 2 == 0)) //radicant is negative and degree is even
                 throw new MathLibException("Root is not defined for negative radicand when the degree is even!");
-            else if (radicand < 0) //radicant is negative and degree is odd
-                return -Math.Pow(-radicand, 1.0 / degree);
+            else if (radicand.DoubleOperand < 0) //radicant is negative and degree is odd
+                return new Operand(-Math.Pow(-radicand.DoubleOperand, 1.0 / degree.LongOperand));
 
-            return Math.Pow(radicand, 1.0 / degree);
+            return new Operand(Math.Pow(radicand.DoubleOperand, 1.0 / degree.LongOperand));
         }
 
         /**
@@ -173,13 +121,13 @@ namespace IVSCalc.MathLib
        *
        * @return Returns a number between 0 and 1 (zero included)
        */
-        public static double Random()
+        public static Operand Random()
         {
             int limit = 9999999;
             var random = new Random();
             int randomNumber = random.Next(limit);
 
-            return randomNumber / ((double) limit + 1);
+            return new Operand(randomNumber / ((double) limit + 1));
         }
     }
 }

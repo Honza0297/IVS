@@ -2,8 +2,8 @@
  * Project: IVSCalc DreamTeamIVS
  * File: UnitTests.cs
  * Date: 11.3.2020
- * Author: Daniel Bubeníèek (xbuben05@stud.fit.vutbr.cz)
- *
+ * Authors: Daniel Bubeníèek (xbuben05@stud.fit.vutbr.cz), Jan Beran (xberan43@stud.fit.vutbr.cz)
+ *      
  * Description: Unit tests for MathLib
  *
  *******************************************************************/
@@ -16,8 +16,6 @@
 
 
 using System;
-using System.IO;
-using System.Reflection.Metadata.Ecma335;
 using IVSCalc.MathLib;
 using Xunit;
 
@@ -30,13 +28,13 @@ namespace MathLibTests
      */
     public class MathLibTests
     {
-        private int a = 5;
-        private int b = 8;
-        private int c = -3;
-        private double d = 4.7;
-        private double e = 2.1;
-        private double f = -4.1;
-        private int zero = 0;
+        private Operand a = new Operand(5);
+        private Operand b = new Operand(8);
+        private Operand c = new Operand(-3);
+        private Operand d = new Operand(4.7);
+        private Operand e = new Operand(2.1);
+        private Operand f = new Operand(-4.1);
+        private Operand zero = new Operand(0);
 
         /**
          * @brief Tests the Add() method of MathLib
@@ -92,9 +90,9 @@ namespace MathLibTests
         [Fact]
         public void DivisionTest()
         {
-            Assert.Equal(MathLib.Divide(a, b), a / (double)b);
-            Assert.Equal(MathLib.Divide(a, c), a / (double)c);
-            Assert.Equal(MathLib.Divide(b, a), b / (double)a);
+            Assert.Equal(MathLib.Divide(a, b), a / b);
+            Assert.Equal(MathLib.Divide(a, c), a / c);
+            Assert.Equal(MathLib.Divide(b, a), b / a);
             Assert.Equal(MathLib.Divide(d, e), d / e);
             Assert.Equal(MathLib.Divide(e, f), e / f);
             Assert.Equal(MathLib.Divide(f, d), f / d);
@@ -109,13 +107,13 @@ namespace MathLibTests
         [Fact]
         public void FactorialTest()
         {
-            Assert.Equal(1, MathLib.Factorial(0));
-            Assert.Equal(1, MathLib.Factorial(1));
-            Assert.Equal(2, MathLib.Factorial(2));
-            Assert.Equal(6, MathLib.Factorial(3));
-            Assert.Equal(120, MathLib.Factorial(5));
-            Assert.Throws<MathLibException>(() => MathLib.Factorial(-1));
-            Assert.Throws<MathLibException>(() => MathLib.Factorial(-42));
+            Assert.Equal(1, MathLib.Factorial(new Operand(0)).LongOperand);
+            Assert.Equal(1, MathLib.Factorial(new Operand(1)).LongOperand);
+            Assert.Equal(2, MathLib.Factorial(new Operand(2)).LongOperand);
+            Assert.Equal(6, MathLib.Factorial(new Operand(3)).LongOperand);
+            Assert.Equal(120, MathLib.Factorial(new Operand(5)).LongOperand);
+            Assert.Throws<MathLibException>(() => MathLib.Factorial(new Operand(-1)));
+            Assert.Throws<MathLibException>(() => MathLib.Factorial(new Operand(-42)));
         }
 
         /**
@@ -124,17 +122,17 @@ namespace MathLibTests
         [Fact]
         public void PowerTest()
         {
-            Assert.Equal(4, MathLib.Power(2, 2));
-            Assert.Equal(0, MathLib.Power(0, 2));
-            Assert.Equal(1, MathLib.Power(-1, 2));
-            Assert.Equal(-1, MathLib.Power(-1, 3));
-            Assert.Equal(16, MathLib.Power(2, 4));
-            Assert.Equal(16, MathLib.Power(-2, 4));
-            Assert.Equal(Math.Pow(2.3, 3), MathLib.Power(2.3, 3));
-            Assert.Equal(Math.Pow(-5.9, 7), MathLib.Power(-5.9, 7));
-            Assert.Throws<MathLibException>(() => MathLib.Power(1, 0));
-            Assert.Throws<MathLibException>(() => MathLib.Power(-5, -1));
-            Assert.Throws<MathLibException>(() => MathLib.Power(10, -42));
+            Assert.Equal(4, MathLib.Power(new Operand(2), new Operand(2)).LongOperand);
+            Assert.Equal(0, MathLib.Power(new Operand(0), new Operand(2)).LongOperand);
+            Assert.Equal(1, MathLib.Power(new Operand(1), new Operand(2)).LongOperand);
+            Assert.Equal(-1, MathLib.Power(new Operand(-1), new Operand(3)).LongOperand);
+            Assert.Equal(16, MathLib.Power(new Operand(2), new Operand(4)).LongOperand);
+            Assert.Equal(16, MathLib.Power(new Operand(-2), new Operand(4)).LongOperand);
+            Assert.Equal(Math.Pow(2.3, 3), MathLib.Power(new Operand(2.3), new Operand(3)).DoubleOperand);
+            Assert.Equal(Math.Pow(-5.9, 7), MathLib.Power(new Operand(-5.9), new Operand(7)).DoubleOperand);
+            Assert.Throws<MathLibException>(() => MathLib.Power(new Operand(1), new Operand(0)));
+            Assert.Throws<MathLibException>(() => MathLib.Power(new Operand(-5), new Operand(-1)));
+            Assert.Throws<MathLibException>(() => MathLib.Power(new Operand(10), new Operand(-42)));
         }
 
         /**
@@ -143,16 +141,17 @@ namespace MathLibTests
         [Fact]
         public void RootTest()
         {
-            Assert.Equal(0,  MathLib.Root(0, 4));
-            Assert.Equal(0,  MathLib.Root(0, 19));
-            Assert.Equal(2,  MathLib.Root(4, 2));
-            Assert.Equal(-3,  MathLib.Root(-27, 3));
-            Assert.Equal(Math.Pow(3.46, 1 / (double) 4),  MathLib.Root(3.46, 4));
-            Assert.Equal(-Math.Pow(83.2, 1 / (double) 5),  MathLib.Root(-83.2, 5));
-            Assert.Equal(0.2,  MathLib.Root(5, -1));
-            Assert.Throws<MathLibException>(() => MathLib.Root(5, 0));
-            Assert.Throws<MathLibException>(() => MathLib.Root(-1, 2));
-            Assert.Throws<MathLibException>(() => MathLib.Root(-52.36, 4));
+            Assert.Equal(0,  MathLib.Root(new Operand(0), new Operand(4)).LongOperand);
+            Assert.Equal(-3, MathLib.Root(new Operand(-27), new Operand(3)).LongOperand);
+            Assert.Equal(0, MathLib.Root(new Operand(0), new Operand(19)).LongOperand);
+            Assert.Equal(2, MathLib.Root(new Operand(4), new Operand(2)).LongOperand);
+
+            Assert.Equal(Math.Pow(3.46, 1 / (double) 4),  MathLib.Root(new Operand(3.46), new Operand(4)).DoubleOperand);
+            Assert.Equal(-Math.Pow(83.2, 1 / (double) 5),  MathLib.Root(new Operand(-83.2), new Operand(5)).DoubleOperand);
+            Assert.Equal(0.2,  MathLib.Root(new Operand( 5), new Operand(-1)).DoubleOperand);
+            Assert.Throws<MathLibException>(() => MathLib.Root(new Operand( 5), new Operand(0)));
+            Assert.Throws<MathLibException>(() => MathLib.Root(new Operand(-1), new Operand(2)));
+            Assert.Throws<MathLibException>(() => MathLib.Root(new Operand(-52.36), new Operand(4)));
         }
 
         /**
@@ -161,7 +160,7 @@ namespace MathLibTests
         [Fact]
         public void RandomTest()
         {
-            double[] randoms = new double[100];
+            Operand[] randoms = new Operand[100];
             bool difference = false; //flag for check if at least 1 generated random number is different than the rest of the batch
 
             for (var i = 0; i < randoms.Length; i++)
@@ -174,7 +173,7 @@ namespace MathLibTests
                 if (randomNumber != randoms[0])
                     difference = true;
 
-                Assert.True(randomNumber >= 0 && randomNumber < 1);
+                Assert.True(randomNumber.LongOperand >= 0 && randomNumber.LongOperand < 1);
             }
 
             Assert.True(difference); //theoretically could fail, but it just won't
