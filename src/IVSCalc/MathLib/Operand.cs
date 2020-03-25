@@ -66,6 +66,29 @@ namespace IVSCalc.MathLib
             DoubleOperand = doubleOperand;
         }
 
+        /*
+        * @brief Constructor for Operand class
+        *
+        * @param stringOperand number to store in Operand class
+        */
+        public Operand(string stringOperand)
+        {
+            bool result;
+            if (stringOperand.Contains(","))
+            {
+                result = double.TryParse(stringOperand, out _doubleOperand);
+                DoubleOperand = _doubleOperand;
+            }
+            else
+            {
+                result = long.TryParse(stringOperand, out _longOperand);
+                LongOperand = _longOperand;
+            }
+            if (!result)
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         /*
          * @brief Override for +
@@ -216,6 +239,5 @@ namespace IVSCalc.MathLib
             }
         }
 
-//TODO operace odmocnina, faktorial
     }
 }
