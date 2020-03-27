@@ -11,6 +11,7 @@
 using IVSCalc.Command;
 using IVSCalc.MathLib;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace IVSCalc.ViewModels
@@ -28,6 +29,10 @@ namespace IVSCalc.ViewModels
         private string _calculation;
 
         private string _op;
+
+        private Visibility _errorVisibility;
+
+        private string _errorText;
 
         public string Input
         {
@@ -47,6 +52,22 @@ namespace IVSCalc.ViewModels
                 OnPropertyChanged();
             }
         }
+        public Visibility ErrorVisibility
+        {
+            get => _errorVisibility; set
+            {
+                _errorVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ErrorText
+        {
+            get => _errorText; set
+            {
+                _errorText = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand NumberPressCommand { get; set; }
         public ICommand ClearPressCommand { get; set; }
         public ICommand RemovePressCommand { get; set; }
@@ -58,6 +79,7 @@ namespace IVSCalc.ViewModels
          */
         public MainViewModel()
         {
+            ErrorVisibility = Visibility.Hidden;
             NumberPressCommand = new RelayCommand<string>((number) => NumberPressed(number));
             ClearPressCommand = new RelayCommand(ClearPressed);
             RemovePressCommand = new RelayCommand(RemovePressed);
@@ -75,7 +97,9 @@ namespace IVSCalc.ViewModels
         {
             if (!String.IsNullOrEmpty(_op)) // Second operator in line
             {
-                return; // TODO handle error
+                ErrorText = "Only one operator in line is supported";
+                ErrorVisibility = Visibility.Visible;
+                return;
             }
             Input += op;
             _op = op;
@@ -87,6 +111,7 @@ namespace IVSCalc.ViewModels
          */
         private void SolvePressed()
         {
+            bool error = false;
             if ((_op == null) || (_op.Length == 0))
             {
                 Calculation = _input;
@@ -96,96 +121,135 @@ namespace IVSCalc.ViewModels
             if (_op.Length == 1)
             {
                 string[] parsed = _input.Split(_op[0]);
-                if (parsed.Length == 0 && _op == "rand")
+                if (parsed[1] == "" && _op == "!")
                 {
-                    result = MathLib.MathLib.Random();
-                }
-                else if (parsed.Length == 2)
-                {
-                    if (parsed[1] == "" && _op == "!")
+                    try
                     {
                         Operand op = new Operand(parsed[0]);
-                        //TODO hadle error in operand creation
                         result = MathLib.MathLib.Factorial(op);
                     }
-                    else if (parsed[0] == "" && _op == "√")
+                    catch (MathLibException e)
+                    {
+                        ErrorText = e.Message;
+                        ErrorVisibility = Visibility.Visible;
+                        error = true;
+                    }
+                }
+                else if (parsed[0] == "" && _op == "√")
+                {
+                    try
                     {
                         Operand op = new Operand(parsed[1]); // operand is after operator
-                        //TODO hadle error in operand creation
                         result = MathLib.MathLib.Root(op, new Operand(2));
                     }
-                    else
+                    catch (MathLibException e)
                     {
-                        Operand op1 = new Operand(parsed[0]);
-                        Operand op2 = new Operand(parsed[1]);
-                        //TODO hadle error in operand creation
-                        switch (_op[0])
-                        {
-                            case '+':
-                                result = MathLib.MathLib.Add(op1, op2);
-                                break;
-                            case '-':
-                                result = MathLib.MathLib.Subtract(op1, op2);
-                                break;
-                            case '*':
-                                result = MathLib.MathLib.Multiply(op1, op2);
-                                break;
-                            case '/':
-                                try
-                                {
-                                    result = MathLib.MathLib.Divide(op1, op2);
-                                }
-                                catch (DivideByZeroException e)
-                                {
-                                    //TODO hadle error
-                                }
-                                break;
-                            case '^':
-                                result = MathLib.MathLib.Power(op1, op2);
-                                //TODO hadle error?
-                                break;
-                            case '√':
-                                result = MathLib.MathLib.Root(op2, op1); // first operand is degree
-                                //TODO hadle error?
-                                break;
-                            default:
-                                // TODO hadle error
-                                throw new NotImplementedException();
-                        }
+                        ErrorText = e.Message;
+                        ErrorVisibility = Visibility.Visible;
+                        error = true;
+                        return;
                     }
                 }
                 else
                 {
-                    // TODO hadle error
-                    throw new NotImplementedException();
+                    Operand op1;
+                    Operand op2;
+                    try
+                    {
+                        op1 = new Operand(parsed[0]);
+                        op2 = new Operand(parsed[1]);
+                    }
+                    catch (MathLibException e)
+                    {
+                        ErrorText = e.Message;
+                        ErrorVisibility = Visibility.Visible;
+                        error = true;
+                        return;
+                    }
+                    switch (_op[0])
+                    {
+                        case '+':
+                            result = MathLib.MathLib.Add(op1, op2);
+                            break;
+                        case '-':
+                            result = MathLib.MathLib.Subtract(op1, op2);
+                            break;
+                        case '*':
+                            result = MathLib.MathLib.Multiply(op1, op2);
+                            break;
+                        case '/':
+                            try
+                            {
+                                result = MathLib.MathLib.Divide(op1, op2);
+                            }
+                            catch (MathLibException e)
+                            {
+                                ErrorText = e.Message;
+                                ErrorVisibility = Visibility.Visible;
+                                error = true;
+                            }
+                            break;
+                        case '^':
+                            try
+                            {
+                                result = MathLib.MathLib.Power(op1, op2);
+                            }
+                            catch (MathLibException e)
+                            {
+                                ErrorText = e.Message;
+                                ErrorVisibility = Visibility.Visible;
+                                error = true;
+                            }
+                            break;
+                        case '√':
+                            try
+                            {
+                                result = MathLib.MathLib.Root(op2, op1); // first operand is degree
+                            }
+                            catch (MathLibException e)
+                            {
+                                ErrorText = e.Message;
+                                ErrorVisibility = Visibility.Visible;
+                                error = true;
+                            }
+                            break;
+                    }
                 }
             }
             else if (_op.Length > 1)
             {
                 string[] parsed = _input.Split(_op[0]);
-                if (parsed[0] != "" && parsed[1] == "2" && _op == "^2")
+                if (parsed[0] != "" && _input.EndsWith(_op))
                 {
-                    Operand op = new Operand(parsed[0]);
-                    //TODO hadle error in operand creation
-                    result = MathLib.MathLib.Power(op, new Operand(2));
-                    //TODO hadle error?
+                    try
+                    {
+                        Operand op = new Operand(parsed[0]);
+                        result = MathLib.MathLib.Power(op, new Operand(2));
+                    }
+                    catch (MathLibException e)
+                    {
+                        ErrorText = e.Message;
+                        ErrorVisibility = Visibility.Visible;
+                        error = true;
+                    }
+                }
+                else if (parsed[0] == "" && _input.EndsWith(_op))
+                {
+                    result = MathLib.MathLib.Random();
                 }
                 else
                 {
-                    // TODO hadle error
-                    throw new NotImplementedException();
+                    ErrorText = "Unexpected number in this operation";
+                    ErrorVisibility = Visibility.Visible;
+                    error = true;
                 }
             }
-            Calculation = _input;
-            if (result == null)
+            if (!error)
             {
-                Input = ""; // TODO use some box to display error
-            }
-            else
-            {
+                Calculation = _input;
                 Input = result.ToString();
+                _op = "";
             }
-            _op = "";
         }
 
         /*
@@ -196,12 +260,19 @@ namespace IVSCalc.ViewModels
         {
             if (_input.Length > 0)
             {
-                if (_op.Length == 1 && _input[_input.Length - 1] == _op[0])
+                if (_input.EndsWith(_op))
                 {
+                    Input = _input.Remove(_input.Length - _op.Length);
                     _op = "";
-                    // TODO remove operator from _op if _op.Length > 1
                 }
-                Input = _input.Remove(_input.Length - 1);
+                else
+                {
+                    Input = _input.Remove(_input.Length - 1);
+                }
+            }
+            if (_errorVisibility == Visibility.Visible)
+            {
+                ErrorVisibility = Visibility.Hidden;
             }
         }
 
@@ -214,6 +285,10 @@ namespace IVSCalc.ViewModels
             Input = "";
             Calculation = "";
             _op = "";
+            if (_errorVisibility == Visibility.Visible)
+            {
+                ErrorVisibility = Visibility.Hidden;
+            }
         }
 
         /*
@@ -223,6 +298,10 @@ namespace IVSCalc.ViewModels
         public void NumberPressed(string number)
         {
             Input += number;
+            if(_errorVisibility == Visibility.Visible)
+            {
+                ErrorVisibility = Visibility.Hidden;
+            }
         }
 
     }

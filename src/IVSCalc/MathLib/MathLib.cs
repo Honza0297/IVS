@@ -93,7 +93,7 @@ namespace IVSCalc.MathLib
             if(power.LongOperand <= 0)
                 throw new MathLibException("The only supported powers are greater than zero integers!");
 
-            return new Operand(Math.Pow(baseNumber.DoubleOperand, power.LongOperand));
+            return new Operand(Math.Pow(baseNumber.DoubleOperand, power.DoubleOperand));
         }
 
         /**

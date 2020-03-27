@@ -86,7 +86,7 @@ namespace IVSCalc.MathLib
             }
             if (!result)
             {
-                throw new NotImplementedException();
+                throw new MathLibException("Wrong operand string");
             }
         }
 
@@ -155,7 +155,7 @@ namespace IVSCalc.MathLib
          */
         public static Operand operator/(Operand first, Operand second)
         {
-            if(second.LongOperand == 0)
+            if(second.DoubleOperand == 0)
                 throw new DivideByZeroException();
 
             /* When dividing, always use double TODO CHECKME*/
