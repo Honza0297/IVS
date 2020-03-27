@@ -66,6 +66,29 @@ namespace IVSCalc.MathLib
             DoubleOperand = doubleOperand;
         }
 
+        /*
+        * @brief Constructor for Operand class
+        *
+        * @param stringOperand number to store in Operand class
+        */
+        public Operand(string stringOperand)
+        {
+            bool result;
+            if (stringOperand.Contains(","))
+            {
+                result = double.TryParse(stringOperand, out _doubleOperand);
+                DoubleOperand = _doubleOperand;
+            }
+            else
+            {
+                result = long.TryParse(stringOperand, out _longOperand);
+                LongOperand = _longOperand;
+            }
+            if (!result)
+            {
+                throw new MathLibException("Wrong operand string");
+            }
+        }
 
         /*
          * @brief Override for +
@@ -132,7 +155,7 @@ namespace IVSCalc.MathLib
          */
         public static Operand operator/(Operand first, Operand second)
         {
-            if(second.LongOperand == 0)
+            if(second.DoubleOperand == 0)
                 throw new DivideByZeroException();
 
             /* When dividing, always use double TODO CHECKME*/
@@ -216,6 +239,5 @@ namespace IVSCalc.MathLib
             }
         }
 
-//TODO operace odmocnina, faktorial
     }
 }

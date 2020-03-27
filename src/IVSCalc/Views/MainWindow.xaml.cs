@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*******************************************************************
+ * Project: IVSCalc DreamTeamIVS
+ * File: MainWindow.cs
+ * Date: 25.3.2020
+ * Author: Peter Dragun (xdragu01stud.fit.vutbr.cz)
+ *
+ * Description: Main view for aplication
+ *
+ *******************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +25,7 @@ using System.Windows.Shapes;
 
 namespace IVSCalc
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
