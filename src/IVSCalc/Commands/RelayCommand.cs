@@ -11,7 +11,7 @@
 using System;
 using System.Windows.Input;
 
-namespace IVSCalc.Command
+namespace IVSCalc.Commands
 {
     public class RelayCommand : ICommand
     {

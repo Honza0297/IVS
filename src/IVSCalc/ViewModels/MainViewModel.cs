@@ -8,11 +8,11 @@
  *
  *******************************************************************/
 
-using IVSCalc.Command;
-using IVSCalc.MathLib;
 using System;
 using System.Windows;
 using System.Windows.Input;
+using IVSCalc.Commands;
+using MathLibrary;
 
 namespace IVSCalc.ViewModels
 {
@@ -126,7 +126,7 @@ namespace IVSCalc.ViewModels
                     try
                     {
                         Operand op = new Operand(parsed[0]);
-                        result = MathLib.MathLib.Factorial(op);
+                        result = MathLib.Factorial(op);
                     }
                     catch (MathLibException e)
                     {
@@ -140,7 +140,7 @@ namespace IVSCalc.ViewModels
                     try
                     {
                         Operand op = new Operand(parsed[1]); // operand is after operator
-                        result = MathLib.MathLib.Root(op, new Operand(2));
+                        result = MathLib.Root(op, new Operand(2));
                     }
                     catch (MathLibException e)
                     {
@@ -169,18 +169,18 @@ namespace IVSCalc.ViewModels
                     switch (_op[0])
                     {
                         case '+':
-                            result = MathLib.MathLib.Add(op1, op2);
+                            result = MathLib.Add(op1, op2);
                             break;
                         case '-':
-                            result = MathLib.MathLib.Subtract(op1, op2);
+                            result = MathLib.Subtract(op1, op2);
                             break;
                         case '*':
-                            result = MathLib.MathLib.Multiply(op1, op2);
+                            result = MathLib.Multiply(op1, op2);
                             break;
                         case '/':
                             try
                             {
-                                result = MathLib.MathLib.Divide(op1, op2);
+                                result = MathLib.Divide(op1, op2);
                             }
                             catch (MathLibException e)
                             {
@@ -192,7 +192,7 @@ namespace IVSCalc.ViewModels
                         case '^':
                             try
                             {
-                                result = MathLib.MathLib.Power(op1, op2);
+                                result = MathLib.Power(op1, op2);
                             }
                             catch (MathLibException e)
                             {
@@ -204,7 +204,7 @@ namespace IVSCalc.ViewModels
                         case '√':
                             try
                             {
-                                result = MathLib.MathLib.Root(op2, op1); // first operand is degree
+                                result = MathLib.Root(op2, op1); // first operand is degree
                             }
                             catch (MathLibException e)
                             {
@@ -224,7 +224,7 @@ namespace IVSCalc.ViewModels
                     try
                     {
                         Operand op = new Operand(parsed[0]);
-                        result = MathLib.MathLib.Power(op, new Operand(2));
+                        result = MathLib.Power(op, new Operand(2));
                     }
                     catch (MathLibException e)
                     {
@@ -235,7 +235,7 @@ namespace IVSCalc.ViewModels
                 }
                 else if (parsed[0] == "" && _input.EndsWith(_op))
                 {
-                    result = MathLib.MathLib.Random();
+                    result = MathLib.Random();
                 }
                 else
                 {

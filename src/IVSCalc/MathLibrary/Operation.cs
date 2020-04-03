@@ -8,7 +8,7 @@
  *
  *******************************************************************/
 
-namespace IVSCalc.MathLib
+namespace MathLibrary
 {
     /*
      * @brief Enumeration type to decide what operation is currently executed

@@ -16,7 +16,7 @@
 
 
 using System;
-using IVSCalc.MathLib;
+using MathLibrary;
 using Xunit;
 
 namespace MathLibTests

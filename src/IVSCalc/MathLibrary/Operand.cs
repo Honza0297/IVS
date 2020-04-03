@@ -10,7 +10,7 @@
 
 using System;
 
-namespace IVSCalc.MathLib
+namespace MathLibrary
 {
     /*
      * @class Operand
