@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IVSCalc\IVSCalc.csproj" />
     <ProjectReference Include="..\IVSCalc\MathLibrary\MathLibrary.csproj" />
+    <ProjectReference Include="..\stddev\stddev.csproj" />
   </ItemGroup>
 
 </Project>
