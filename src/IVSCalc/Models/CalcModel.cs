@@ -1,4 +1,4 @@
-﻿using IVSCalc.MathLib;
+﻿using MathLibrary;
 
 namespace IVSCalc.Models
 {

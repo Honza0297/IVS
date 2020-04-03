@@ -17,7 +17,7 @@
 
 using System;
 
-namespace IVSCalc.MathLib
+namespace MathLibrary
 {
     /**
      * @class MathLib

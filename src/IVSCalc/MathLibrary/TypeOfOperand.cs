@@ -7,7 +7,7 @@
  * Description: enum type to determine Type
  *
  *******************************************************************/
-namespace IVSCalc.MathLib
+namespace MathLibrary
 {
     /*
      * @brief Enum to decide if Operand stores long or double number
