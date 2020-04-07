@@ -258,9 +258,9 @@ namespace IVSCalc.ViewModels
          */
         private void RemovePressed()
         {
-            if (_input.Length > 0)
+            if (_input != null && _input.Length > 0)
             {
-                if (_input.EndsWith(_op))
+                if (!String.IsNullOrEmpty(_op) && _input.EndsWith(_op))
                 {
                     Input = _input.Remove(_input.Length - _op.Length);
                     _op = "";
