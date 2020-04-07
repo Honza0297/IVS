@@ -1,4 +1,21 @@
-﻿using System;
+﻿/*******************************************************************
+ * Project: IVSCalc DreamTeamIVS
+ * File: StandardDeviation.cs
+ * Date: 11.3.2020
+ * Author: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz)
+ *
+ * Description: App for standard deviation calculation - for profiling test
+ *
+ *******************************************************************/
+
+/**
+ * @file StandardDeviation.cs
+ *
+ * @brief App for standard deviation calculation
+ * @author Daniel Bubeníček (xbuben05)
+ */
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,8 +25,18 @@ using MathLibrary;
 
 namespace stddev
 {
+    /**
+     * @class StandardDeviation
+     *
+     * @brief App for standard deviation calculation
+     */
     public class StandardDeviation
     {
+        /**
+         * @brief Calculates standard deviation of numbers from standard input and writes the result to standard output
+         *
+         * @param args not used
+         */
         private static void Main(string[] args)
         {
             List<int> inputNumbers = new List<int>();
@@ -37,6 +64,12 @@ namespace stddev
             Console.WriteLine(s.ToString());
         }
 
+        /**
+         * @brief Calculates standard deviation from list of numbers
+         *
+         * @param inputNumbers
+         * @return result of standard deviation
+         */
         public static Operand CalculateStandardDeviation(IReadOnlyCollection<int> inputNumbers)
         {
             var sum = new Operand(0); //variable for sum of input numbers
@@ -60,6 +93,11 @@ namespace stddev
             return s;
         }
 
+        /**
+         * @brief Reads one number from STDIN
+         *
+         * @return Number from STDIN
+         */
         private static int ReadNumber()
         {
             string inputBuffer = ""; //buffer for read number
