@@ -4,9 +4,16 @@
  * Date: 25.3.2020
  * Author: Peter Dragun (xdragu01stud.fit.vutbr.cz)
  *
- * Description: Replay command
+ * Description: Sending commands from views to viewModels
  *
  *******************************************************************/
+
+/**
+* @file RelayCommand.cs
+*
+* @brief Sending commands from views to viewModels
+* @author Peter Dragun (xdragu01)
+*/
 
 using System;
 using System.Windows.Input;

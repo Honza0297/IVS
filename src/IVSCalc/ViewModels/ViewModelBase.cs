@@ -8,13 +8,15 @@
  *
  *******************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+/**
+* @file ViewModelBase.cs
+*
+* @brief Base class for viewmodels with event OnPropertyChanded
+* @author Peter Dragun (xdragu01)
+*/
+
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
-using System.Threading.Tasks;
 
 namespace IVSCalc.ViewModels
 {

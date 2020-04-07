@@ -4,15 +4,24 @@
  * Date: 25.3.2020
  * Author: Peter Dragun (xdragu01stud.fit.vutbr.cz)
  *
- * Description: Main viewmodel
+ * Description: Main viewmodel - "backend" of aplication
  *
  *******************************************************************/
+
+/**
+* @file MainViewModel.cs
+*
+* @brief Main viewmodel - "backend" of aplication
+* @author Peter Dragun (xdragu01)
+*/
 
 using System;
 using System.Windows;
 using System.Windows.Input;
 using IVSCalc.Commands;
 using MathLibrary;
+using IVSCalc.Services;
+using IVSCalc.Messages;
 
 namespace IVSCalc.ViewModels
 {
@@ -24,6 +33,8 @@ namespace IVSCalc.ViewModels
 
     class MainViewModel : ViewModelBase
     {
+        private readonly IMediator _mediator;
+
         private string _input;
 
         private string _calculation;
@@ -32,7 +43,15 @@ namespace IVSCalc.ViewModels
 
         private Visibility _errorVisibility;
 
+        private Visibility _basicViewVisibility;
+        
+        private Visibility _scientificViewVisibility;
+
         private string _errorText;
+
+        private string _numeralSystem;
+
+        private string _goniometricUnits;
 
         public string Input
         {
@@ -68,23 +87,140 @@ namespace IVSCalc.ViewModels
                 OnPropertyChanged();
             }
         }
+        public Visibility BasicViewVisibility
+        {
+            get => _basicViewVisibility; set
+            {
+                _basicViewVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public Visibility ScientificViewVisibility
+        {
+            get => _scientificViewVisibility; set
+            {
+                _scientificViewVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public string NumeralSystem
+        {
+            get => _numeralSystem; set
+            {
+                _numeralSystem = value;
+                OnPropertyChanged();
+            }
+        }
+        public string GoniometricUnits
+        {
+            get => _goniometricUnits; set
+            {
+                _goniometricUnits = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand NumberPressCommand { get; set; }
         public ICommand ClearPressCommand { get; set; }
         public ICommand RemovePressCommand { get; set; }
         public ICommand OperatorPressCommand { get; set; }
         public ICommand SolvePressCommand { get; set; }
+        public ICommand ChangeViewCommand { get; set; }
+        public ICommand ChangeNumeralSystemCommand { get; set; }
+        public ICommand ChangeGoniometricUnitsCommand { get; set; }
 
         /*
          * @brief Constructor for MainViewModel class
+         * 
+         * @param mediator madiator for sending messages in ViewModels
          */
-        public MainViewModel()
+        public MainViewModel(IMediator mediator)
         {
+            NumeralSystem = "dec";
+            GoniometricUnits = "deg";
+            _mediator = mediator;
+            _mediator.Register<ChangeViewMessage>(ChangeViewMessageHandler);
             ErrorVisibility = Visibility.Hidden;
+            ScientificViewVisibility = Visibility.Hidden;
+            BasicViewVisibility = Visibility.Visible;
             NumberPressCommand = new RelayCommand<string>((number) => NumberPressed(number));
             ClearPressCommand = new RelayCommand(ClearPressed);
             RemovePressCommand = new RelayCommand(RemovePressed);
             SolvePressCommand = new RelayCommand(SolvePressed);
             OperatorPressCommand = new RelayCommand<string>((op) => OperatorPressed(op));
+            ChangeViewCommand = new RelayCommand<string>((view) => ChangeView(view));
+            ChangeNumeralSystemCommand = new RelayCommand<string>((currentNumeralSystem) => ChangeNumeralSystem(currentNumeralSystem));
+            ChangeGoniometricUnitsCommand = new RelayCommand<string>((currentGoniometricUnits) => ChangeGoniometricUnits(currentGoniometricUnits));
+        }
+
+        /*
+         * @brief Change current goniometric units
+         * 
+         * @param currentGoniometricUnits string specifying goniometric units
+         */
+        private void ChangeGoniometricUnits(string currentGoniometricUnits)
+        {
+            if (currentGoniometricUnits == "deg")
+            {
+                GoniometricUnits = "rad";
+            }
+            else if (currentGoniometricUnits == "rad")
+            {
+                GoniometricUnits = "grad";
+            }
+            else if (currentGoniometricUnits == "grad")
+            {
+                GoniometricUnits = "deg";
+            }
+        }
+
+        /*
+         * @brief Change current numeral system
+         * 
+         * @param currentNumeralSystem string specifying numeral system
+         */
+        private void ChangeNumeralSystem(string currentNumeralSystem)
+        {
+            if (currentNumeralSystem == "bin")
+            {
+                NumeralSystem = "dec";
+            }else if (currentNumeralSystem == "dec")
+            {
+                NumeralSystem = "hex";
+            }
+            else if (currentNumeralSystem == "hex")
+            {
+                NumeralSystem = "bin";
+            }
+        }
+
+        /*
+         * @brief Handler for message from scientific view.
+         * Changin View from scientific mode to basic
+         * 
+         * @param obj message
+         */
+        private void ChangeViewMessageHandler(ChangeViewMessage obj)
+        {
+            ScientificViewVisibility = Visibility.Hidden;
+            BasicViewVisibility = Visibility.Visible;
+        }
+
+        /*
+         * @brief Changin View from basic mode to scinetific
+         * 
+         * @param view name of current view
+         */
+        private void ChangeView(string view)
+        {
+            if(view == "Scientific")
+            {
+                BasicViewVisibility = Visibility.Hidden;
+                ScientificViewVisibility = Visibility.Visible;
+            }
+            else
+            {
+                _mediator.Send(new ChangeViewMessage());
+            }
         }
 
         /*
@@ -258,9 +394,9 @@ namespace IVSCalc.ViewModels
          */
         private void RemovePressed()
         {
-            if (_input.Length > 0)
+            if (_input != null && _input.Length > 0)
             {
-                if (_input.EndsWith(_op))
+                if (!String.IsNullOrEmpty(_op) && _input.EndsWith(_op))
                 {
                     Input = _input.Remove(_input.Length - _op.Length);
                     _op = "";
