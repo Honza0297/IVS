@@ -8,11 +8,14 @@
  *
  *******************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+/**
+* @file ViewModelLocator.cs
+*
+* @brief Helper for locating viewmodels
+* @author Peter Dragun (xdragu01)
+*/
+
+using IVSCalc.Services;
 
 namespace IVSCalc.ViewModels
 {
@@ -24,11 +27,12 @@ namespace IVSCalc.ViewModels
 
     class ViewModelLocator
     {
-        public MainViewModel MainViewModel => new MainViewModel();
+        private readonly IMediator mediator;
+        public MainViewModel MainViewModel => new MainViewModel(mediator);
 
         public ViewModelLocator()
         {
-
+            mediator = new Mediator();
         }
     }
 }
