@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Calculator" Height="450" Width="800"
         MinHeight="300" MinWidth="480"
+        Icon="../Icons/BigDuckIconYellow.ico"
         d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
         DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel}">
     <Grid>
