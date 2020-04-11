@@ -16,4 +16,4 @@ DreamTeamIVS
 Licence
 -------
 
-Tento program je poskytovan jako projekt do předmětu IVS. Jeho kopírování je zakázáno. 
+Tento program je šířen pod licencí GNU GPL v3. 
