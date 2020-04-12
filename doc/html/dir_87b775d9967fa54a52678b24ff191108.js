@@ -1,6 +1,8 @@
 var dir_87b775d9967fa54a52678b24ff191108 =
 [
-    [ "MathLib.cs", "_math_lib_8cs.html", null ],
+    [ "MathLib.cs", "_math_lib_8cs.html", [
+      [ "MathLib", "class_math_library_1_1_math_lib.html", "class_math_library_1_1_math_lib" ]
+    ] ],
     [ "MathLibException.cs", "_math_lib_exception_8cs.html", [
       [ "MathLibException", "class_math_library_1_1_math_lib_exception.html", "class_math_library_1_1_math_lib_exception" ]
     ] ],
