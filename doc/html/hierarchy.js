@@ -30,6 +30,7 @@ var hierarchy =
     [ "InternalTypeHelper", null, [
       [ "XamlGeneratedNamespace.GeneratedInternalTypeHelper", "class_xaml_generated_namespace_1_1_generated_internal_type_helper.html", null ]
     ] ],
+    [ "MathLibrary.MathLib", "class_math_library_1_1_math_lib.html", null ],
     [ "MathLibTests.MathLibTests", "class_math_lib_tests_1_1_math_lib_tests.html", null ],
     [ "MathLibTests", "class_math_lib_tests.html", null ],
     [ "MathLibrary.Operand", "class_math_library_1_1_operand.html", null ],
