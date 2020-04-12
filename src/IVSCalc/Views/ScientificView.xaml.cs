@@ -15,7 +15,6 @@
 * @author Peter Dragun (xdragu01)
 */
 
-
 using System.Windows.Controls;
 
 namespace IVSCalc.Views

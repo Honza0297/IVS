@@ -19,7 +19,7 @@ using IVSCalc.Services;
 
 namespace IVSCalc.ViewModels
 {
-    /*
+    /**
      * @class ViewModelLocator
      *
      * @brief Helper for locating viewmodels

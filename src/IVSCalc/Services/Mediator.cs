@@ -22,7 +22,7 @@ using IVSCalc.Messages;
 
 namespace IVSCalc.Services
 {
-    /*
+    /**
      * @class Mediator
      *
      * @brief Implementing methods for sending messages
@@ -32,7 +32,7 @@ namespace IVSCalc.Services
     {
         private readonly Dictionary<Type, List<Delegate>> registeredActions = new Dictionary<Type, List<Delegate>>();
 
-        /*
+        /**
          * @brief Register (accept) message
          * 
          * @param action message to be registered
@@ -49,7 +49,7 @@ namespace IVSCalc.Services
             registeredActions[key].Add(action);
         }
 
-        /*
+        /**
          * @brief Unregister message
          * 
          * @param action message to be unregistered
@@ -68,7 +68,7 @@ namespace IVSCalc.Services
             }
         }
 
-        /*
+        /**
          * @brief Send message
          * 
          * @param action message to send

@@ -20,7 +20,7 @@ using System.ComponentModel;
 
 namespace IVSCalc.ViewModels
 {
-    /*
+    /**
      * @class ViewModel
      *
      * @brief Base class for viewmodels with event OnPropertyChanded

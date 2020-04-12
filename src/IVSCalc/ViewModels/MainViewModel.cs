@@ -25,7 +25,7 @@ using IVSCalc.Messages;
 
 namespace IVSCalc.ViewModels
 {
-    /*
+    /**
      * @class MainViewModel
      *
      * @brief Default ViewModel. All UI components are biding to properties of this ViewModel.
@@ -128,7 +128,7 @@ namespace IVSCalc.ViewModels
         public ICommand ChangeNumeralSystemCommand { get; set; }
         public ICommand ChangeGoniometricUnitsCommand { get; set; }
 
-        /*
+        /**
          * @brief Constructor for MainViewModel class
          * 
          * @param mediator madiator for sending messages in ViewModels
@@ -152,7 +152,7 @@ namespace IVSCalc.ViewModels
             ChangeGoniometricUnitsCommand = new RelayCommand<string>((currentGoniometricUnits) => ChangeGoniometricUnits(currentGoniometricUnits));
         }
 
-        /*
+        /**
          * @brief Change current goniometric units
          * 
          * @param currentGoniometricUnits string specifying goniometric units
@@ -173,7 +173,7 @@ namespace IVSCalc.ViewModels
             }
         }
 
-        /*
+        /**
          * @brief Change current numeral system
          * 
          * @param currentNumeralSystem string specifying numeral system
@@ -193,7 +193,7 @@ namespace IVSCalc.ViewModels
             }
         }
 
-        /*
+        /**
          * @brief Handler for message from scientific view.
          * Changin View from scientific mode to basic
          * 
@@ -205,7 +205,7 @@ namespace IVSCalc.ViewModels
             BasicViewVisibility = Visibility.Visible;
         }
 
-        /*
+        /**
          * @brief Changin View from basic mode to scinetific
          * 
          * @param view name of current view
@@ -223,7 +223,7 @@ namespace IVSCalc.ViewModels
             }
         }
 
-        /*
+        /**
          * @brief Command invoked by pressing operator. Store operator. 
          * Error on second operator in one line
          *
@@ -241,7 +241,7 @@ namespace IVSCalc.ViewModels
             _op = op;
         }
 
-        /*
+        /**
          * @brief Command invoked by pressing solve.
          * Handle solving math problem.
          */
@@ -388,7 +388,7 @@ namespace IVSCalc.ViewModels
             }
         }
 
-        /*
+        /**
          * @brief Command invoked by pressing backspace button.
          * Removing last character from input.
          */
@@ -412,7 +412,7 @@ namespace IVSCalc.ViewModels
             }
         }
 
-        /*
+        /**
          * @brief Command invoked by pressing clear button.
          * Claers both lines in UI.
          */
@@ -427,7 +427,7 @@ namespace IVSCalc.ViewModels
             }
         }
 
-        /*
+        /**
          * @brief Command invoked by pressing number.
          * Add number to input.
          */

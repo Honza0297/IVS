@@ -8,6 +8,13 @@
  *
  *******************************************************************/
 
+/**
+* @file  MainWindow.cs
+*
+* @brief Main view for aplication
+* @author Peter Dragun (xdragu01)
+*/
+
 using System.Windows;
 
 namespace IVSCalc
