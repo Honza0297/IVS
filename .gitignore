@@ -11,6 +11,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.dll
 
 # Fortran module files
 *.mod
@@ -23,12 +24,9 @@
 *.lib
 
 # Executables
+*.exe
 *.out
 *.app
-
-libiconv2.dll
-libintl3.dll
-make.exe
 
 
 ##################################################################
@@ -56,12 +54,14 @@ mono_crash.*
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
+[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
@@ -205,7 +205,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-
+publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
