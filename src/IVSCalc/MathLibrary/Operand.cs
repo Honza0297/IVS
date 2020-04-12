@@ -7,12 +7,17 @@
  * Description: Operand class
  *
  *******************************************************************/
-
+/**
+* @file Operand.cs
+*
+* @brief Operand class
+* @author Jan Beran (xberan43)
+*/
 using System;
 
 namespace MathLibrary
 {
-    /*
+    /**
      * @class Operand
      *
      * @brief Purpose of Operand class is to encapsulate the differences between
@@ -46,7 +51,7 @@ namespace MathLibrary
         public TypeOfOperand Type { get; private set; }
 
 
-        /*
+        /**
          * @brief Constructor for Operand class
          *
          * @param longOperand number to store in Operand class
@@ -56,7 +61,7 @@ namespace MathLibrary
             LongOperand = longOperand;
         }
 
-        /*
+        /**
         * @brief Constructor for Operand class
         *
         * @param doubleOperand number to store in Operand class
@@ -66,7 +71,7 @@ namespace MathLibrary
             DoubleOperand = doubleOperand;
         }
 
-        /*
+        /**
         * @brief Constructor for Operand class
         *
         * @param stringOperand number to store in Operand class
@@ -90,7 +95,7 @@ namespace MathLibrary
             }
         }
 
-        /*
+        /**
          * @brief Override for +
          *
          * @return Result of first + second
@@ -109,7 +114,7 @@ namespace MathLibrary
             }
         }
 
-        /*
+        /**
          * @brief Override for -
          *
          * @return Result of first-second
@@ -128,7 +133,7 @@ namespace MathLibrary
             }
         }
 
-        /*
+        /**
          *
          * @brief Oveeride for *
          *
@@ -148,7 +153,7 @@ namespace MathLibrary
             }
         }
 
-        /*
+        /**
          * @brief Override for /, handles "zero division" case
          *
          * @return result of first/second
@@ -163,7 +168,7 @@ namespace MathLibrary
             return new Operand(result);
         }
 
-        /*
+        /**
          * @brief Override for ==, uses Equals(). As Operand is a wrapper for primitive datatypes,
          * the desired behaviour is to Equals() and == be the same. 
          *
@@ -174,7 +179,7 @@ namespace MathLibrary
             return first.Equals(second);
         }
 
-        /*
+        /**
          * @brief Override for !=
          *
          * @return first != second
@@ -184,7 +189,7 @@ namespace MathLibrary
             return !(first == second);
         }
 
-        /*
+        /**
          * @brief Checks for equality
          *
          * @return True if objects are equal, False if not
@@ -212,7 +217,7 @@ namespace MathLibrary
             }
         }
 
-        /*
+        /**
          * @brief Return HashCode
          *
          * @return HashCode
@@ -222,7 +227,7 @@ namespace MathLibrary
             return _doubleOperand.GetHashCode() ^ Type.GetHashCode();
         }
 
-        /*
+        /**
          * @brief Generates string from
          *
          * @return String represenation of Operand.

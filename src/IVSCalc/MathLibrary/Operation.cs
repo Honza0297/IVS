@@ -7,10 +7,15 @@
  * Description: enum type to determine operation
  *
  *******************************************************************/
-
+/**
+* @file Operation.cs
+*
+* @brief enum type to determine operation
+* @author Jan Beran (xberan43)
+*/
 namespace MathLibrary
 {
-    /*
+    /**
      * @brief Enumeration type to decide what operation is currently executed
      */
     public enum Operation
