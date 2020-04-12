@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
   <asmv1:assemblyIdentity name="IVSCalc.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="BigDuckIconYellow.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
     <assemblyIdentity name="IVSCalc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -42,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IVSCalc.exe" size="59904">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IVSCalc.exe" size="365568">
       <assemblyIdentity name="IVSCalc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JUJt6fzF+b6E3vln+2eeLDgdCDeQkY4yfSjiUO+K36s=</dsig:DigestValue>
+        <dsig:DigestValue>pnAgCI/ZJyvOptFgO3wK538bhANVy1GZRKG+m0Ij+qM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/XlrwnNJvWXfFREhRjjx+PdonFzX2ZQCBlR0DW1wZg4=</dsig:DigestValue>
+        <dsig:DigestValue>nrAZyBTHsQvvUQGRL3bfknY50quTajpW9qIMXKQCCqM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1241,6 +1242,15 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="BigDuckIconYellow.ico" size="103051">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>r5BMxnTUeK0DqXPhaiMqI45md2lood68hvK0lEj84Us=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="IVSCalc.exe.config" size="18072">
     <hash>
       <dsig:Transforms>
