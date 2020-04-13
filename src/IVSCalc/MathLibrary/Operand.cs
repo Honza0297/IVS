@@ -104,12 +104,12 @@ namespace MathLibrary
         {
             if (first.Type == TypeOfOperand.Double || second.Type == TypeOfOperand.Double)
             {
-                double result = first._doubleOperand + second._doubleOperand;
+                double result = checked(first._doubleOperand + second._doubleOperand);
                 return new Operand(result);
             }
             else
             {
-                long result = first._longOperand + second._longOperand;
+                long result = checked(first._longOperand + second._longOperand);
                 return new Operand(result);
             }
         }
@@ -123,12 +123,12 @@ namespace MathLibrary
         {
             if (first.Type == TypeOfOperand.Double || second.Type == TypeOfOperand.Double)
             {
-                double result = first._doubleOperand - second._doubleOperand;
+                double result = checked(first._doubleOperand - second._doubleOperand);
                 return new Operand(result);
             }
             else
             {
-                long result = first._longOperand - second._longOperand;
+                long result = checked(first._longOperand - second._longOperand);
                 return new Operand(result);
             }
         }
@@ -143,12 +143,12 @@ namespace MathLibrary
         {
             if (first.Type == TypeOfOperand.Double || second.Type == TypeOfOperand.Double)
             {
-                double result = first._doubleOperand * second._doubleOperand;
+                double result = checked(first._doubleOperand * second._doubleOperand);
                 return new Operand(result);
             }
             else
             {
-                long result = first._longOperand * second._longOperand;
+                long result = checked(first._longOperand * second._longOperand);
                 return new Operand(result);
             }
         }
@@ -160,11 +160,10 @@ namespace MathLibrary
          */
         public static Operand operator/(Operand first, Operand second)
         {
-            if(second.DoubleOperand == 0)
+            if(second.DoubleOperand.Equals(0))
                 throw new DivideByZeroException();
 
-            /* When dividing, always use double TODO CHECKME*/
-            double result = first._doubleOperand / second._doubleOperand;
+            double result = checked(first._doubleOperand / second._doubleOperand);
             return new Operand(result);
         }
 
