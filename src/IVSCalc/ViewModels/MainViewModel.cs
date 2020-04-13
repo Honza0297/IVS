@@ -264,7 +264,7 @@ namespace IVSCalc.ViewModels
                         Operand op = new Operand(parsed[0]);
                         result = MathLib.Factorial(op);
                     }
-                    catch (MathLibException e)
+                    catch (Exception e)
                     {
                         ErrorText = e.Message;
                         ErrorVisibility = Visibility.Visible;
@@ -278,7 +278,7 @@ namespace IVSCalc.ViewModels
                         Operand op = new Operand(parsed[1]); // operand is after operator
                         result = MathLib.Root(op, new Operand(2));
                     }
-                    catch (MathLibException e)
+                    catch (Exception e)
                     {
                         ErrorText = e.Message;
                         ErrorVisibility = Visibility.Visible;
@@ -295,7 +295,7 @@ namespace IVSCalc.ViewModels
                         op1 = new Operand(parsed[0]);
                         op2 = new Operand(parsed[1]);
                     }
-                    catch (MathLibException e)
+                    catch (Exception e)
                     {
                         ErrorText = e.Message;
                         ErrorVisibility = Visibility.Visible;
@@ -305,20 +305,47 @@ namespace IVSCalc.ViewModels
                     switch (_op[0])
                     {
                         case '+':
-                            result = MathLib.Add(op1, op2);
+                            try
+                            {
+                                result = MathLib.Add(op1, op2);
+                            }
+                            catch (Exception e)
+                            {
+                                ErrorText = e.Message;
+                                ErrorVisibility = Visibility.Visible;
+                                error = true;
+                            }
                             break;
                         case '-':
-                            result = MathLib.Subtract(op1, op2);
-                            break;
+                            try
+                            {
+                                result = MathLib.Subtract(op1, op2);
+                            }
+                            catch (Exception e)
+                            {
+                                ErrorText = e.Message;
+                                ErrorVisibility = Visibility.Visible;
+                                error = true;
+                            }
+                        break;
                         case '*':
-                            result = MathLib.Multiply(op1, op2);
+                            try
+                            {
+                                result = MathLib.Multiply(op1, op2);
+                            }
+                            catch (Exception e)
+                            {
+                                ErrorText = e.Message;
+                                ErrorVisibility = Visibility.Visible;
+                                error = true;
+                            }
                             break;
                         case '/':
                             try
                             {
                                 result = MathLib.Divide(op1, op2);
                             }
-                            catch (MathLibException e)
+                            catch (Exception e)
                             {
                                 ErrorText = e.Message;
                                 ErrorVisibility = Visibility.Visible;
@@ -330,7 +357,7 @@ namespace IVSCalc.ViewModels
                             {
                                 result = MathLib.Power(op1, op2);
                             }
-                            catch (MathLibException e)
+                            catch (Exception e)
                             {
                                 ErrorText = e.Message;
                                 ErrorVisibility = Visibility.Visible;
@@ -342,7 +369,7 @@ namespace IVSCalc.ViewModels
                             {
                                 result = MathLib.Root(op2, op1); // first operand is degree
                             }
-                            catch (MathLibException e)
+                            catch (Exception e)
                             {
                                 ErrorText = e.Message;
                                 ErrorVisibility = Visibility.Visible;
@@ -362,7 +389,7 @@ namespace IVSCalc.ViewModels
                         Operand op = new Operand(parsed[0]);
                         result = MathLib.Power(op, new Operand(2));
                     }
-                    catch (MathLibException e)
+                    catch (Exception e)
                     {
                         ErrorText = e.Message;
                         ErrorVisibility = Visibility.Visible;
@@ -371,7 +398,16 @@ namespace IVSCalc.ViewModels
                 }
                 else if (parsed[0] == "" && _input.EndsWith(_op))
                 {
-                    result = MathLib.Random();
+                    try
+                    {
+                        result = MathLib.Random();
+                    }
+                    catch (Exception e)
+                    {
+                        ErrorText = e.Message;
+                        ErrorVisibility = Visibility.Visible;
+                        error = true;
+                    }
                 }
                 else
                 {
