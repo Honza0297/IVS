@@ -27,9 +27,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Height="Auto" MinWidth="100" Content="Scientific" Background="#2b3cab" Foreground="White" Command="{Binding ChangeViewCommand}"
-                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"  ToolTip="Swtich to scientific mode"/>
                     <TextBlock Grid.Column="1" Text="{Binding Calculation, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                           FontSize="36" Margin="5 5 5 5" Foreground="Gray"/>
+                           FontSize="36" Margin="5 5 5 5" Foreground="Gray" ToolTip="Calculation"/>
                 </Grid>
                 <Separator></Separator>
                 <Grid>
@@ -37,7 +37,7 @@
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding ErrorText, UpdateSourceTrigger=PropertyChanged}" Foreground="Black"
                                FontSize="16" Margin="5 5 5 5"/>
                     </Border>
-                    <TextBlock Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Margin="5 5 5 5"/>
+                    <TextBlock Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Margin="5 5 5 5"  ToolTip="Input/Result line"/>
                 </Grid>
             </StackPanel>
             <Grid Grid.Row="1" Background="#2b3cab">
@@ -61,26 +61,26 @@
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
                 <Button Grid.Column="2" Grid.Row="0" Content="9" Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
-                <Button Grid.Column="3" Grid.Row="0" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="+">
+                <Button Grid.Column="3" Grid.Row="0" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="+" ToolTip="Addition">
                     <Image Source="/Icons/plus.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="4" Grid.Row="0" Height="Auto" Command="{Binding RemovePressCommand}">
+                <Button Grid.Column="4" Grid.Row="0" Height="Auto" Command="{Binding RemovePressCommand}" ToolTip="Remove last number (operator)">
                     <Image Source="/Icons/backspace.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="5" Grid.Row="0" Content="C" Height="Auto" FontSize="20" Foreground="White" Command="{Binding ClearPressCommand}"/>
+                <Button Grid.Column="5" Grid.Row="0" Content="C" Height="Auto" FontSize="20" Foreground="White" Command="{Binding ClearPressCommand}" ToolTip="Clear"/>
                 <Button Grid.Column="0" Grid.Row="1" Content="4" Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
                 <Button Grid.Column="1" Grid.Row="1" Content="5" Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
                 <Button Grid.Column="2" Grid.Row="1" Content="6" Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
-                <Button Grid.Column="3" Grid.Row="1" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="-">
+                <Button Grid.Column="3" Grid.Row="1" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="-" ToolTip="Substraction">
                     <Image Source="/Icons/minus.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="4" Grid.Row="1" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="^2">
+                <Button Grid.Column="4" Grid.Row="1" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="^2" ToolTip="Power of two">
                     <Image Source="/Icons/format-superscript.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="5" Grid.Row="1" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="√">
+                <Button Grid.Column="5" Grid.Row="1" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="√" ToolTip="Square root">
                     <Image Source="/Icons/square-root.png" Stretch="None"/>
                 </Button>
                 <Button Grid.Column="0" Grid.Row="2" Content="1" Height="Auto" FontSize="20" Foreground="White"
@@ -89,25 +89,27 @@
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
                 <Button Grid.Column="2" Grid.Row="2" Content="3" Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
-                <Button Grid.Column="3" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="*">
+                <Button Grid.Column="3" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="*" ToolTip="Multiplication">
                     <Image Source="/Icons/multiplication.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="4" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="^">
+                <Button Grid.Column="4" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="^" ToolTip="Power of y. Press number x, operator and then y.">
                     <Image Source="/Icons/exponent.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="5" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="√">
+                <Button Grid.Column="5" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="√" ToolTip="General (y-th) root. Press number x, operator and then y.">
                     <Image Source="/Icons/root.png" Stretch="Uniform" Height="38"/>
                 </Button>
-                <Button Grid.Column="0" Grid.Row="3" Content="rand" Height="Auto" FontSize="20" Foreground="White" Command="{Binding OperatorPressCommand}" CommandParameter="rand"/>
+                <Button Grid.Column="0" Grid.Row="3" Content="rand" Height="Auto" FontSize="20" Foreground="White" Command="{Binding OperatorPressCommand}" CommandParameter="rand"
+                        ToolTip="Generate random number from &lt;0,1)"/>
                 <Button Grid.Column="1" Grid.Row="3" Content="0" Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
                 <Button Grid.Column="2" Grid.Row="3" Content="," Height="Auto" FontSize="20" Foreground="White"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
-                <Button Grid.Column="3" Grid.Row="3" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="/">
+                <Button Grid.Column="3" Grid.Row="3" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="/" ToolTip="Division">
                     <Image Source="/Icons/division.png" Stretch="None"/>
                 </Button>
-                <Button Grid.Column="4" Grid.Row="3" Content="fact" Height="Auto" FontSize="20" Foreground="White" Command="{Binding OperatorPressCommand}" CommandParameter="!"/>
-                <Button Grid.Column="5" Grid.Row="3" Height="Auto" Command="{Binding SolvePressCommand}">
+                <Button Grid.Column="4" Grid.Row="3" Content="fact" Height="Auto" FontSize="20" Foreground="White" Command="{Binding OperatorPressCommand}" CommandParameter="!"
+                        ToolTip="Factorial"/>
+                <Button Grid.Column="5" Grid.Row="3" Height="Auto" Command="{Binding SolvePressCommand}" ToolTip="Solve">
                     <Image Source="/Icons/equal.png" Stretch="None"/>
                 </Button>
             </Grid>
