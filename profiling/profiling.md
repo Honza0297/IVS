@@ -2,7 +2,7 @@
 
 ## Úvod
 
-Tento dokument je stručnou zprávou o výsledcích profilingu projektu 2 dp IVS týmu DreamTeamIVS. Jako nástroj pro profiling byla použita vestavěná utilita Microsoft Visual Studia _Performance Profiler_. Jako typ profilingu byl zvolen "Instrumentation" a jako metrika průměrný čas vykonávání funkce ("Avg Elapsed Exclusive Time").
+Tento dokument je stručnou zprávou o výsledcích profilingu projektu 2 do IVS týmu DreamTeamIVS. Jako nástroj pro profiling byla použita vestavěná utilita Microsoft Visual Studia _Performance Profiler_. Jako typ profilingu byl zvolen "Instrumentation" a jako metrika průměrný čas vykonávání funkce ("Avg Elapsed Exclusive Time").
 
 ## Výsledky profilingu 
 

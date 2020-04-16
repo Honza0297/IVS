@@ -2,7 +2,7 @@
  * Project: IVSCalc DreamTeamIVS
  * File: StandardDeviation.cs
  * Date: 11.3.2020
- * Author: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz) & Jan Beran (xbuben05@stud.fit.vutbr.cz)
+ * Author: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz) & Jan Beran (xberan43@stud.fit.vutbr.cz) & Peter Dragúň (xdragu01@stud.fit.vutbr.cz)
  *
  * Description: App for standard deviation calculation - for profiling test
  *
@@ -14,14 +14,12 @@
  * @brief App for standard deviation calculation
  * @author Daniel Bubeníček (xbuben05)
  * @author Jan Beran (xberan43)
+ * @author Peter Dragúň (xdragu01)
  */
 
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathLibrary;
 
 namespace stddev
@@ -122,7 +120,7 @@ namespace stddev
                 inputBuffer += Convert.ToChar(inputChar);
                 inputChar = Console.Read();
                 if (inputChar == -1) //EOF
-                    return Int32.Parse(inputBuffer);
+                    break;
             }
 
             return Int32.Parse(inputBuffer);
