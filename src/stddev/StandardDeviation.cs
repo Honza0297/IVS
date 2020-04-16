@@ -2,7 +2,7 @@
  * Project: IVSCalc DreamTeamIVS
  * File: StandardDeviation.cs
  * Date: 11.3.2020
- * Author: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz)
+ * Author: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz) & Jan Beran (xberan43@stud.fit.vutbr.cz) & Peter Dragúň (xdragu01@stud.fit.vutbr.cz)
  *
  * Description: App for standard deviation calculation - for profiling test
  *
@@ -13,14 +13,13 @@
  *
  * @brief App for standard deviation calculation
  * @author Daniel Bubeníček (xbuben05)
+ * @author Jan Beran (xberan43)
+ * @author Peter Dragúň (xdragu01)
  */
 
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MathLibrary;
 
 namespace stddev
@@ -78,17 +77,19 @@ namespace stddev
                 sum += new Operand(number);
             }
 
-            var N = new Operand(inputNumbers.Count);
+            int c = inputNumbers.Count;
+            var N = new Operand((long)c);
             var x = sum / N;
 
             var Nx2 = N * MathLib.Power(x, new Operand(2)); //N * x^2
 
-            var temp = new Operand(0) - Nx2; //sum(number^2) - N * x^2
+            var temp = new Operand(0); //sum(number^2) - N * x^2
             foreach (var number in inputNumbers)
             {
                 temp += MathLib.Power(new Operand(number), new Operand(2));
             }
 
+            temp -= Nx2;
             var s = MathLib.Root(temp / (N - new Operand(1)), new Operand(2));
             return s;
         }
@@ -116,10 +117,10 @@ namespace stddev
             while (!Char.IsWhiteSpace(Convert.ToChar(inputChar)))
             {
                 
-                inputBuffer += inputChar;
+                inputBuffer += Convert.ToChar(inputChar);
                 inputChar = Console.Read();
                 if (inputChar == -1) //EOF
-                    throw new EndOfStreamException();
+                    break;
             }
 
             return Int32.Parse(inputBuffer);
