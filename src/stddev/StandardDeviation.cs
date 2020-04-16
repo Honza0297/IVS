@@ -85,7 +85,7 @@ namespace stddev
 
             var Nx2 = N * MathLib.Power(x, new Operand(2)); //N * x^2
 
-            var temp = new Operand(0); //- Nx2; //sum(number^2) - N * x^2
+            var temp = new Operand(0); //sum(number^2) - N * x^2
             foreach (var number in inputNumbers)
             {
                 temp += MathLib.Power(new Operand(number), new Operand(2));
