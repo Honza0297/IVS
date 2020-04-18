@@ -1,16 +1,14 @@
 Prostredi
 ---------
 
-Ubuntu 64bit
-
 Windows 64bit
 
 Autori
 ------
 
 DreamTeamIVS
-- xberan43 Jan Beran
 - xbuben05 Daniel Bubeníček
+- xberan43 Jan Beran
 - xdragu01 Peter Dragúň  
 
 Licence

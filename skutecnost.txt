@@ -1,1 +1,3 @@
-tento soubor bude obsahovat rozdil mezi planem projektu a skutecnosti
+Od našeho plánu jsme se nijak zásadně neodchýlili, pouze jsme většinu úkolů plnili dříve, než byl námi nastavený termín.
+Jediná menší změna byla, že Peter Dragúň vypracoval větší část backendu namísto Jana Berana, který si to potom vynahradil větším podílem na profilingu, který měl být původně společnou prací.
+Namísto původně plánovaných osobních schůzek jsme kvůli omezením souvisejícími s koronavirem zvolili skype hovory.
