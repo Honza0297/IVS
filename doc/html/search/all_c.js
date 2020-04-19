@@ -1,6 +1,13 @@
 var searchData=
 [
-  ['tostring_71',['ToString',['../class_math_library_1_1_operand.html#aa54ab5abd06e403ba52ac5c6f494ecc9',1,'MathLibrary::Operand']]],
-  ['typeofoperand_72',['TypeOfOperand',['../namespace_math_library.html#a7df2c81dab6d7cc8c808a53cacb14b74',1,'MathLibrary']]],
-  ['typeofoperand_2ecs_73',['TypeOfOperand.cs',['../_type_of_operand_8cs.html',1,'']]]
+  ['scientificview_64',['ScientificView',['../class_i_v_s_calc_1_1_views_1_1_scientific_view.html',1,'IVSCalc::Views']]],
+  ['send_3c_20tmessage_20_3e_65',['Send&lt; TMessage &gt;',['../class_i_v_s_calc_1_1_services_1_1_mediator.html#a684d8998e0e20cd0950da912b9d3ece1',1,'IVSCalc::Services::Mediator']]],
+  ['setpropertyvalue_66',['SetPropertyValue',['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture)'],['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture)'],['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture)'],['../class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#ade0f04c0f7b18dd5b170e071d5534d38',1,'XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture)']]],
+  ['standarddeviation_67',['StandardDeviation',['../classstddev_1_1_standard_deviation.html',1,'stddev']]],
+  ['standarddeviation_2ecs_68',['StandardDeviation.cs',['../_standard_deviation_8cs.html',1,'']]],
+  ['standarddeviationtest_69',['StandardDeviationTest',['../class_math_lib_tests_1_1_standard_deviation_tests.html#ab91e5061a1f6a962c0c1d2d2e17b7114',1,'MathLibTests::StandardDeviationTests']]],
+  ['standarddeviationtests_70',['StandardDeviationTests',['../class_math_lib_tests_1_1_standard_deviation_tests.html',1,'MathLibTests']]],
+  ['stddev_71',['stddev',['../namespacestddev.html',1,'']]],
+  ['subtract_72',['Subtract',['../class_math_library_1_1_math_lib.html#aa4e9b7c1da6a41fc27f169bd34748d5f',1,'MathLibrary::MathLib']]],
+  ['subtractiontest_73',['SubtractionTest',['../class_math_lib_tests_1_1_math_lib_tests.html#aa1808e1b50687c29fd3f29829dd52d19',1,'MathLibTests::MathLibTests']]]
 ];

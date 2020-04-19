@@ -89,6 +89,9 @@ $(document).ready(function(){initNavTree('class_i_v_s_calc_1_1_services_1_1_medi
 <div class="title">IVSCalc.Services.Mediator Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementing methods for sending messages.  
+ <a href="class_i_v_s_calc_1_1_services_1_1_mediator.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for IVSCalc.Services.Mediator:</div>
 <div class="dyncontent">
@@ -101,16 +104,127 @@ Inheritance diagram for IVSCalc.Services.Mediator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a322c48f1c4e85adc9372a7e3f25ec075"><td class="memItemLeft" align="right" valign="top"><a id="a322c48f1c4e85adc9372a7e3f25ec075"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Register&lt; TMessage &gt;</b> (Action&lt; TMessage &gt; action)</td></tr>
+<tr class="memitem:a322c48f1c4e85adc9372a7e3f25ec075"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_v_s_calc_1_1_services_1_1_mediator.html#a322c48f1c4e85adc9372a7e3f25ec075">Register&lt; TMessage &gt;</a> (Action&lt; TMessage &gt; action)</td></tr>
+<tr class="memdesc:a322c48f1c4e85adc9372a7e3f25ec075"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register (accept) message.  <a href="class_i_v_s_calc_1_1_services_1_1_mediator.html#a322c48f1c4e85adc9372a7e3f25ec075">More...</a><br /></td></tr>
 <tr class="separator:a322c48f1c4e85adc9372a7e3f25ec075"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb34b2b910549f730e9aa5f3c1f4728d"><td class="memItemLeft" align="right" valign="top"><a id="afb34b2b910549f730e9aa5f3c1f4728d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UnRegister&lt; TMessage &gt;</b> (Action&lt; TMessage &gt; action)</td></tr>
+<tr class="memitem:afb34b2b910549f730e9aa5f3c1f4728d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_v_s_calc_1_1_services_1_1_mediator.html#afb34b2b910549f730e9aa5f3c1f4728d">UnRegister&lt; TMessage &gt;</a> (Action&lt; TMessage &gt; action)</td></tr>
+<tr class="memdesc:afb34b2b910549f730e9aa5f3c1f4728d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister message.  <a href="class_i_v_s_calc_1_1_services_1_1_mediator.html#afb34b2b910549f730e9aa5f3c1f4728d">More...</a><br /></td></tr>
 <tr class="separator:afb34b2b910549f730e9aa5f3c1f4728d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684d8998e0e20cd0950da912b9d3ece1"><td class="memItemLeft" align="right" valign="top"><a id="a684d8998e0e20cd0950da912b9d3ece1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Send&lt; TMessage &gt;</b> (TMessage message)</td></tr>
+<tr class="memitem:a684d8998e0e20cd0950da912b9d3ece1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_v_s_calc_1_1_services_1_1_mediator.html#a684d8998e0e20cd0950da912b9d3ece1">Send&lt; TMessage &gt;</a> (TMessage message)</td></tr>
+<tr class="memdesc:a684d8998e0e20cd0950da912b9d3ece1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send message.  <a href="class_i_v_s_calc_1_1_services_1_1_mediator.html#a684d8998e0e20cd0950da912b9d3ece1">More...</a><br /></td></tr>
 <tr class="separator:a684d8998e0e20cd0950da912b9d3ece1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementing methods for sending messages. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a322c48f1c4e85adc9372a7e3f25ec075"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a322c48f1c4e85adc9372a7e3f25ec075">&#9670;&nbsp;</a></span>Register&lt; TMessage &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IVSCalc.Services.Mediator.Register&lt; TMessage &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Action&lt; TMessage &gt;&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Register (accept) message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>message to be registered </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="interface_i_v_s_calc_1_1_services_1_1_i_mediator.html">IVSCalc.Services.IMediator</a>.</p>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>TMessage</em></td><td>&#160;:</td><td valign="top"><em>IMessage</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a684d8998e0e20cd0950da912b9d3ece1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a684d8998e0e20cd0950da912b9d3ece1">&#9670;&nbsp;</a></span>Send&lt; TMessage &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IVSCalc.Services.Mediator.Send&lt; TMessage &gt; </td>
+          <td>(</td>
+          <td class="paramtype">TMessage&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>message to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="interface_i_v_s_calc_1_1_services_1_1_i_mediator.html">IVSCalc.Services.IMediator</a>.</p>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>TMessage</em></td><td>&#160;:</td><td valign="top"><em>IMessage</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="afb34b2b910549f730e9aa5f3c1f4728d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb34b2b910549f730e9aa5f3c1f4728d">&#9670;&nbsp;</a></span>UnRegister&lt; TMessage &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IVSCalc.Services.Mediator.UnRegister&lt; TMessage &gt; </td>
+          <td>(</td>
+          <td class="paramtype">Action&lt; TMessage &gt;&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unregister message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>message to be unregistered </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="interface_i_v_s_calc_1_1_services_1_1_i_mediator.html">IVSCalc.Services.IMediator</a>.</p>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>TMessage</em></td><td>&#160;:</td><td valign="top"><em>IMessage</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>IVSCalc/Services/<a class="el" href="_mediator_8cs.html">Mediator.cs</a></li>
 </ul>

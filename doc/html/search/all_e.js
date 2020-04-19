@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['viewmodelbase_75',['ViewModelBase',['../class_i_v_s_calc_1_1_view_models_1_1_view_model_base.html',1,'IVSCalc::ViewModels']]],
-  ['viewmodelbase_2ecs_76',['ViewModelBase.cs',['../_view_model_base_8cs.html',1,'']]],
-  ['viewmodellocator_77',['ViewModelLocator',['../class_i_v_s_calc_1_1_view_models_1_1_view_model_locator.html',1,'IVSCalc::ViewModels']]],
-  ['viewmodellocator_2ecs_78',['ViewModelLocator.cs',['../_view_model_locator_8cs.html',1,'']]]
+  ['unittests_2ecs_77',['UnitTests.cs',['../_unit_tests_8cs.html',1,'']]],
+  ['unregister_3c_20tmessage_20_3e_78',['UnRegister&lt; TMessage &gt;',['../class_i_v_s_calc_1_1_services_1_1_mediator.html#afb34b2b910549f730e9aa5f3c1f4728d',1,'IVSCalc::Services::Mediator']]]
 ];
