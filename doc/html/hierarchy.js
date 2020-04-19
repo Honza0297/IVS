@@ -40,6 +40,7 @@ var hierarchy =
     [ "UserControl", null, [
       [ "IVSCalc.Views.ScientificView", "class_i_v_s_calc_1_1_views_1_1_scientific_view.html", null ]
     ] ],
+    [ "ViewModel", "class_view_model.html", null ],
     [ "IVSCalc.ViewModels.ViewModelLocator", "class_i_v_s_calc_1_1_view_models_1_1_view_model_locator.html", null ],
     [ "Window", null, [
       [ "IVSCalc.MainWindow", "class_i_v_s_calc_1_1_main_window.html", null ]

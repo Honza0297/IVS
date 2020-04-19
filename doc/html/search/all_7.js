@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['main_31',['Main',['../class_i_v_s_calc_1_1_app.html#a10c3e080647ec09114d0a137e98d919a',1,'IVSCalc.App.Main()'],['../class_i_v_s_calc_1_1_app.html#a10c3e080647ec09114d0a137e98d919a',1,'IVSCalc.App.Main()']]],
-  ['mainviewmodel_32',['MainViewModel',['../class_i_v_s_calc_1_1_view_models_1_1_main_view_model.html',1,'IVSCalc::ViewModels']]],
+  ['main_31',['Main',['../class_i_v_s_calc_1_1_app.html#a10c3e080647ec09114d0a137e98d919a',1,'IVSCalc.App.Main()'],['../class_i_v_s_calc_1_1_app.html#a10c3e080647ec09114d0a137e98d919a',1,'IVSCalc.App.Main()'],['../class_i_v_s_calc_1_1_app.html#a10c3e080647ec09114d0a137e98d919a',1,'IVSCalc.App.Main()'],['../class_i_v_s_calc_1_1_app.html#a10c3e080647ec09114d0a137e98d919a',1,'IVSCalc.App.Main()']]],
+  ['mainviewmodel_32',['MainViewModel',['../class_i_v_s_calc_1_1_view_models_1_1_main_view_model.html',1,'IVSCalc.ViewModels.MainViewModel'],['../class_i_v_s_calc_1_1_view_models_1_1_main_view_model.html#a816f47c7389e65ac86503482e2a637ac',1,'IVSCalc.ViewModels.MainViewModel.MainViewModel()']]],
   ['mainviewmodel_2ecs_33',['MainViewModel.cs',['../_main_view_model_8cs.html',1,'']]],
   ['mainwindow_34',['MainWindow',['../class_i_v_s_calc_1_1_main_window.html',1,'IVSCalc']]],
   ['mathlib_35',['MathLib',['../class_math_library_1_1_math_lib.html',1,'MathLibrary']]],
