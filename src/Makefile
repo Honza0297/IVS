@@ -19,7 +19,7 @@ run:
 	.\IVSCalc\bin\Release\IVSCalc.exe
 
 profile:
-	.\stddev\bin\Release\stddev.exe <.\stddev\data.txt
+	.\stddev\bin\Release\stddev.exe <.\stddev\100.txt
 
 install:
 	.\IVSCalc\install\setup.exe

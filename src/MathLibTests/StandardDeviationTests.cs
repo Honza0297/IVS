@@ -1,19 +1,18 @@
 ﻿/*******************************************************************
  * Project: IVSCalc DreamTeamIVS
- * File: UnitTests.cs
+ * File: StandardDeviationTests.cs
  * Date: 11.3.2020
- * Authors: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz), Jan Beran (xberan43@stud.fit.vutbr.cz)
+ * Authors: Daniel Bubeníček (xbuben05@stud.fit.vutbr.cz)
  *      
- * Description: Unit tests for MathLib
+ * Description: Tests for stddev app
  *
  *******************************************************************/
 /**
- * @file UnitTests.cs
+ * @file StandardDeviationTests.cs
  *
- * @brief Unit tests for MathLib
+ * @brief Tests for stddev app
  * @author Daniel Bubeníček (xbuben05)
  */
-
 
 using System;
 using System.Collections.Generic;
@@ -24,15 +23,14 @@ using Xunit;
 namespace MathLibTests
 {
     /**
-     * @class MathLibTests
+     * @class StandardDeviationTests
      *
-     * @brief Tests for MathLib
+     * @brief Tests for stddev app
      */
     public class StandardDeviationTests
     {
-       
         /**
-         * @brief Tests the Add() method of MathLib
+         * @brief Tests CalculateStandardDeviation method 
          */
         [Fact]
         public void StandardDeviationTest()
@@ -41,7 +39,5 @@ namespace MathLibTests
             var result = StandardDeviation.CalculateStandardDeviation(numbers);
             Assert.Equal(MathLib.Root(new Operand(2), new Operand(2)), result);
         }
-
-       
     }
 }
