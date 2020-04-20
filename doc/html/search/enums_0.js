@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operation_172',['Operation',['../namespace_math_library.html#a48b658081d1665a0eb5fcfa6f157e94b',1,'MathLibrary']]]
+  ['typeofoperand_167',['TypeOfOperand',['../namespace_math_library.html#a7df2c81dab6d7cc8c808a53cacb14b74',1,'MathLibrary']]]
 ];
