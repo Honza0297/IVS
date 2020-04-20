@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stddev_116',['stddev',['../namespacestddev.html',1,'']]]
+  ['stddev_111',['stddev',['../namespacestddev.html',1,'']]]
 ];
