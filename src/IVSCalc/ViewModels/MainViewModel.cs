@@ -237,8 +237,11 @@ namespace IVSCalc.ViewModels
                 ErrorVisibility = Visibility.Visible;
                 return;
             }
+            if (!((op == "-" || op == "+") && String.IsNullOrEmpty(_input)))
+            {
+                _op = op;
+            }
             Input += op;
-            _op = op;
         }
 
         /**
@@ -248,7 +251,7 @@ namespace IVSCalc.ViewModels
         private void SolvePressed()
         {
             bool error = false;
-            if ((_op == null) || (_op.Length == 0))
+            if (String.IsNullOrEmpty(_op))
             {
                 Calculation = _input;
                 return;
@@ -292,8 +295,16 @@ namespace IVSCalc.ViewModels
                     Operand op2;
                     try
                     {
-                        op1 = new Operand(parsed[0]);
-                        op2 = new Operand(parsed[1]);
+                        if((_op == "-" || _op == "+") && parsed.Length == 3)
+                        {
+                            op1 = new Operand("-" + parsed[1]);
+                            op2 = new Operand(parsed[2]);
+                        }
+                        else
+                        {
+                            op1 = new Operand(parsed[0]);
+                            op2 = new Operand(parsed[1]);
+                        }
                     }
                     catch (Exception e)
                     {
@@ -418,7 +429,7 @@ namespace IVSCalc.ViewModels
             }
             if (!error)
             {
-                Calculation = _input;
+                Calculation = _input + "=";
                 Input = result.ToString();
                 _op = "";
             }
