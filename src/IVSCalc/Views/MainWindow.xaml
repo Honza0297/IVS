@@ -28,8 +28,8 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Height="Auto" MinWidth="100" Content="Scientific" Background="#2b3cab" Foreground="White" Command="{Binding ChangeViewCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"  ToolTip="Swtich to scientific mode"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Calculation, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                           FontSize="36" Margin="5 5 5 5" Foreground="Gray" ToolTip="Calculation"/>
+                    <TextBox Grid.Column="1" Text="{Binding Calculation, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                           FontSize="36" Margin="5 5 5 5" Foreground="Gray" ToolTip="Calculation" IsReadOnly="True" TextWrapping="Wrap"/>
                 </Grid>
                 <Separator></Separator>
                 <Grid>
@@ -37,7 +37,8 @@
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding ErrorText, UpdateSourceTrigger=PropertyChanged}" Foreground="Black"
                                FontSize="16" Margin="5 5 5 5"/>
                     </Border>
-                    <TextBlock Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Margin="5 5 5 5"  ToolTip="Input/Result line"/>
+                    <TextBox Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Margin="5 5 5 5"
+                             ToolTip="Input/Result line" TextWrapping="Wrap" IsReadOnly="True"/>
                 </Grid>
             </StackPanel>
             <Grid Grid.Row="1" Background="#2b3cab">

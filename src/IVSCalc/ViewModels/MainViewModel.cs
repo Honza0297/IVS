@@ -22,6 +22,8 @@ using IVSCalc.Commands;
 using MathLibrary;
 using IVSCalc.Services;
 using IVSCalc.Messages;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IVSCalc.ViewModels
 {
@@ -40,6 +42,8 @@ namespace IVSCalc.ViewModels
         private string _calculation;
 
         private string _op;
+
+        private List<char> _unary;
 
         private Visibility _errorVisibility;
 
@@ -137,6 +141,7 @@ namespace IVSCalc.ViewModels
         {
             NumeralSystem = "dec";
             GoniometricUnits = "deg";
+            _unary = new List<char>();
             _mediator = mediator;
             _mediator.Register<ChangeViewMessage>(ChangeViewMessageHandler);
             ErrorVisibility = Visibility.Hidden;
@@ -231,15 +236,48 @@ namespace IVSCalc.ViewModels
          */
         private void OperatorPressed(string op)
         {
-            if (!String.IsNullOrEmpty(_op)) // Second operator in line
+            if (op == "rand")
             {
-                ErrorText = "Only one operator in line is supported";
-                ErrorVisibility = Visibility.Visible;
+                Operand result;
+                try
+                {
+                    result = MathLib.Random();
+                    Input += result.ToString();
+                }
+                catch (Exception e)
+                {
+                    ErrorText = e.Message;
+                    ErrorVisibility = Visibility.Visible;
+                }
                 return;
             }
-            if (!((op == "-" || op == "+") && String.IsNullOrEmpty(_input)))
+            if (!String.IsNullOrEmpty(_op)) // Second operator in line
             {
-                _op = op;
+                if((op == "-" || op == "+") && _input.EndsWith(_op) && _unary.Count < 2)
+                {
+                    if (_unary.Count == 0)
+                    {
+                        _unary.Add('\0');
+                    }
+                    _unary.Add(op[0]);
+                }
+                else
+                {
+                    ErrorText = "Only one operator in line is supported";
+                    ErrorVisibility = Visibility.Visible;
+                    return;
+                }
+            }
+            else
+            {
+                if (((op == "-" || op == "+") && String.IsNullOrEmpty(_input)))
+                {
+                    _unary.Add(op[0]);
+                }
+                else
+                {
+                    _op = op;
+                }
             }
             Input += op;
         }
@@ -253,7 +291,7 @@ namespace IVSCalc.ViewModels
             bool error = false;
             if (String.IsNullOrEmpty(_op))
             {
-                Calculation = _input;
+                Calculation = _input + "=";
                 return;
             }
             Operand result = null;
@@ -293,18 +331,29 @@ namespace IVSCalc.ViewModels
                 {
                     Operand op1;
                     Operand op2;
+                    if (_unary?.Count > 0)
+                    {
+                        if(_op[0] == _unary[0])
+                        {
+                            if(_unary.Count > 1 && _op[0] == _unary[1])
+                            {
+                                parsed[0] = _unary[0] + parsed[1];
+                                parsed[1] = _unary[1] + parsed[3];
+                            }
+                            else
+                            {
+                                parsed[0] = _unary[0] + parsed[1];
+                                parsed[1] = parsed[2];
+                            }
+                        }else if(_unary.Count > 1 && _op[0] == _unary[1])
+                        {
+                            parsed[1] = _unary[1] + parsed[2];
+                        }
+                    }
                     try
                     {
-                        if((_op == "-" || _op == "+") && parsed.Length == 3)
-                        {
-                            op1 = new Operand("-" + parsed[1]);
-                            op2 = new Operand(parsed[2]);
-                        }
-                        else
-                        {
-                            op1 = new Operand(parsed[0]);
-                            op2 = new Operand(parsed[1]);
-                        }
+                        op1 = new Operand(parsed[0]);
+                        op2 = new Operand(parsed[1]);
                     }
                     catch (Exception e)
                     {
@@ -407,19 +456,6 @@ namespace IVSCalc.ViewModels
                         error = true;
                     }
                 }
-                else if (parsed[0] == "" && _input.EndsWith(_op))
-                {
-                    try
-                    {
-                        result = MathLib.Random();
-                    }
-                    catch (Exception e)
-                    {
-                        ErrorText = e.Message;
-                        ErrorVisibility = Visibility.Visible;
-                        error = true;
-                    }
-                }
                 else
                 {
                     ErrorText = "Unexpected number in this operation";
@@ -429,7 +465,12 @@ namespace IVSCalc.ViewModels
             }
             if (!error)
             {
+                _unary.Clear();
                 Calculation = _input + "=";
+                if (result.DoubleOperand < 0)
+                {
+                    _unary.Add('-');
+                }
                 Input = result.ToString();
                 _op = "";
             }
@@ -445,11 +486,30 @@ namespace IVSCalc.ViewModels
             {
                 if (!String.IsNullOrEmpty(_op) && _input.EndsWith(_op))
                 {
-                    Input = _input.Remove(_input.Length - _op.Length);
-                    _op = "";
+                    if(_unary.Count == 2 && _op[0] == _unary[1])
+                    {
+                        Input = _input.Remove(_input.Length - 1);
+                        _unary.RemoveAt(1);
+                    }
+                    else
+                    {
+                        Input = _input.Remove(_input.Length - _op.Length);
+                        _op = "";
+                    }
                 }
                 else
                 {
+                    if(_unary.Count > 0)
+                    {
+                        if(_unary.Count == 2 && _input.Last() == _unary[1])
+                        {
+                            _unary.RemoveAt(1);
+                        }
+                        else if(_input.Last() == _unary[0])
+                        {
+                            _unary.Clear();
+                        }
+                    }
                     Input = _input.Remove(_input.Length - 1);
                 }
             }
@@ -468,6 +528,7 @@ namespace IVSCalc.ViewModels
             Input = "";
             Calculation = "";
             _op = "";
+            _unary.Clear();
             if (_errorVisibility == Visibility.Visible)
             {
                 ErrorVisibility = Visibility.Hidden;
