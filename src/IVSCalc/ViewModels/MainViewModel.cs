@@ -436,6 +436,11 @@ namespace IVSCalc.ViewModels
                                 error = true;
                             }
                             break;
+                        default:
+                            ErrorText = "Unexpected number in this operation";
+                            ErrorVisibility = Visibility.Visible;
+                            error = true;
+                            break;
                     }
                 }
             }
