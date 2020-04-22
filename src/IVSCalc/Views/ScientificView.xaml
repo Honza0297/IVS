@@ -22,15 +22,16 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Height="Auto" MinWidth="100" Content="Basic" Background="#2b3cab" Foreground="White" Command="{Binding ChangeViewCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" ToolTip="Switch back to basic mode"/>
-                <TextBlock Grid.Column="1" Text="{Binding Calculation, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="36" Margin="5 5 5 5"
-                           Foreground="Gray" ToolTip="Calculation"/>
+                <TextBox Grid.Column="1" Text="{Binding Calculation, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="36" Margin="5 5 5 5"
+                           Foreground="Gray" ToolTip="Calculation" TextWrapping="Wrap" IsReadOnly="True"/>
             </Grid>
             <Separator></Separator>
             <Grid>
                 <Border CornerRadius="10" Background="Red" Visibility="{Binding ErrorVisibility, UpdateSourceTrigger=PropertyChanged}">
                     <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding ErrorText, UpdateSourceTrigger=PropertyChanged}" Foreground="Black" FontSize="16" Margin="5 5 5 5"/>
                 </Border>
-                <TextBlock Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Margin="5 5 5 5" ToolTip="Input/Result line"/>
+                <TextBox Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="40" Margin="5 5 5 5"
+                           ToolTip="Input/Result line" TextWrapping="Wrap" IsReadOnly="True"/>
             </Grid>
         </StackPanel>
         <Grid Grid.Row="1" Background="#2b3cab">
@@ -87,7 +88,7 @@
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
             <Button Grid.Column="2" Grid.Row="2" Content="9" Height="Auto" FontSize="20" Foreground="White" Background="Transparent" BorderBrush="Transparent"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
-            <Button Grid.Column="3" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="+" Background="Transparent" BorderBrush="Transparent" ToolTip="Addition">
+            <Button Grid.Column="3" Grid.Row="2" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="+" Background="Transparent" BorderBrush="Transparent" ToolTip="Addition / unary plus">
                 <Image Source="/Icons/plus.png" Stretch="None"/>
             </Button>
             <Button Grid.Column="4" Grid.Row="2" Content="log" Height="Auto" FontSize="20" Foreground="White" Background="Transparent" BorderBrush="Transparent"
@@ -101,7 +102,7 @@
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
             <Button Grid.Column="2" Grid.Row="3" Content="6" Height="Auto" FontSize="20" Foreground="White" Background="Transparent" BorderBrush="Transparent"
                     Command="{Binding NumberPressCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}"/>
-            <Button Grid.Column="3" Grid.Row="3" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="-" Background="Transparent" BorderBrush="Transparent" ToolTip="Substraction">
+            <Button Grid.Column="3" Grid.Row="3" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="-" Background="Transparent" BorderBrush="Transparent" ToolTip="Substraction / unary minus">
                 <Image Source="/Icons/minus.png" Stretch="None"/>
             </Button>
             <Button Grid.Column="4" Grid.Row="3" Height="Auto" Command="{Binding OperatorPressCommand}" CommandParameter="^2" Background="Transparent" BorderBrush="Transparent" ToolTip="Power of two">
