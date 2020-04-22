@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IVSCalc.exe" size="360960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IVSCalc.exe" size="361984">
       <assemblyIdentity name="IVSCalc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>icgqootjUV+29fzogwT/96GtmpYSl0bewJyTRHcDEDM=</dsig:DigestValue>
+        <dsig:DigestValue>4mZw5tpL6QBSiGKpmJgaf5Nc3hob4Wu+Nx+6aWqKzPQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WBoRZLtTSO9eoB2S8R+HLmgfnBNmwRS4jlEOPzJ+KcE=</dsig:DigestValue>
+        <dsig:DigestValue>iQOuTMAjf0V+AvBjHIKKtGUnJie/aGArm2/CsPgzvl0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
