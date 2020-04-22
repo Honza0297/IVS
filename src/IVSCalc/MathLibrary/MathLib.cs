@@ -71,14 +71,17 @@ namespace MathLibrary
          */
         public static Operand Factorial(Operand number)
         {
-
             if (number.Type == TypeOfOperand.Double || number.LongOperand < 0)
                 throw new MathLibException("Factorial is defined only for non-negative integers!");
 
-            if (number.LongOperand == 0)
+            if (number.LongOperand <= 1)
                 return new Operand(1);
 
-            return number * Factorial(number - new Operand(1));
+            Operand result = new Operand(1);
+            for (var i = 2; i <= number.LongOperand; i++)
+                result = MathLib.Multiply(result, new Operand(i));
+
+            return result;
         }
 
         /**
